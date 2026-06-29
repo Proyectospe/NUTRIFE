@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NUTRIFE | Test de riesgo</title>
+  <link rel="icon" type="image/png" href="../faviIcon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="../css/styles.css" rel="stylesheet" />
+</head>
+<body data-page="diagnostico">
+  <div data-nav></div>
+  <div data-header data-title="Test de riesgo de anemia" data-kicker="Orientativo" data-description="Primero conoce como se confirma la anemia y luego realiza un test segun tu tipo de persona."></div>
+  <main>
+    <section>
+      <div class="container">
+        <div class="screening-alert reveal">
+          <strong>Importante</strong>
+          <p>Este test no diagnostica anemia. Solo estima un nivel de riesgo segun respuestas sobre sintomas y factores personales. El diagnostico real se confirma con evaluacion medica y analisis de sangre.</p>
+        </div>
+
+        <div class="info-panel reveal">
+          <div>
+            <p class="eyebrow">Diagnostico real</p>
+            <h2>La anemia se confirma con pruebas, no con un test web</h2>
+            <p>Un profesional de salud revisa sintomas, antecedentes, alimentacion y signos fisicos. Si lo considera necesario, solicita un hemograma para medir hemoglobina y otros valores de la sangre.</p>
+          </div>
+          <img 
+              src="../imagenes/noweb.png" 
+              alt="Comparación de tipos de anemia"
+              class="image-slot image-slot-tipos image-slot-contain"
+            />   
+        </div>
+
+        <div class="timeline reveal">
+          <article><span>1</span><h3>Consulta</h3><p>Se revisan sintomas, dieta, antecedentes y posibles perdidas de sangre.</p></article>
+          <article><span>2</span><h3>Hemograma</h3><p>La prueba mide hemoglobina y ayuda a confirmar si existe anemia.</p></article>
+          <article><span>3</span><h3>Causa</h3><p>Otros examenes pueden identificar si falta hierro, vitaminas u otra condicion.</p></article>
+        </div>
+
+        <div class="callout reveal">
+          <strong>Ninos y bebes:</strong>
+          <p>En bebes y ninos pequenos la evaluacion debe hacerla personal de salud, porque los valores normales cambian por edad y el crecimiento. Esta pagina los incluye como informacion, pero el test interactivo esta pensado para adolescentes y adultos.</p>
+        </div>
+
+        <div class="test-invite reveal">
+          <div>
+            <p class="eyebrow">Test orientativo</p>
+            <h2>Quieres realizar un test?</h2>
+            <p>Elige tu perfil y responde unas preguntas breves. El resultado no reemplaza una consulta medica, pero puede ayudarte a reconocer senales de alerta.</p>
+          </div>
+          <a class="action-link" href="#test-anemia">Empezar test</a>
+        </div>
+
+        <div class="anemia-test reveal" id="test-anemia" data-anemia-test>
+          <div class="test-top">
+            <div>
+              <p class="eyebrow">Test interactivo</p>
+              <h2>Elige tu perfil antes de empezar</h2>
+              <p>Las preguntas cambian segun el tipo de persona porque los factores de riesgo no son iguales para todos.</p>
+            </div>
+            <div class="test-score-card">
+              <span>Puntaje</span>
+              <strong data-test-score>0</strong>
+              <small data-test-progress-label>Elige un perfil</small>
+            </div>
+          </div>
+
+          <div class="profile-grid" data-profile-grid>
+            <button type="button" class="profile-card" data-profile="adolescente"><span>Adolescente</span><small>12 a 17 anos</small></button>
+            <button type="button" class="profile-card" data-profile="hombre"><span>Hombre adulto</span><small>18 a 59 anos</small></button>
+            <button type="button" class="profile-card" data-profile="mujer"><span>Mujer adulta</span><small>18 a 59 anos</small></button>
+            <button type="button" class="profile-card" data-profile="gestante"><span>Gestante o lactante</span><small>Mayor necesidad de hierro</small></button>
+            <button type="button" class="profile-card" data-profile="adulto-mayor"><span>Adulto mayor</span><small>60 anos o mas</small></button>
+          </div>
+
+          <div class="test-progress" aria-hidden="true">
+            <span data-test-progress></span>
+          </div>
+
+          <form class="test-form" data-test-form>
+            <div class="test-empty">
+              Selecciona un perfil para cargar preguntas especificas.
+            </div>
+          </form>
+
+          <section class="test-result" data-test-result aria-live="polite">
+            <div class="result-meter"><span data-result-meter></span></div>
+            <p class="result-label" data-result-label>Completa el test para ver tu resultado.</p>
+            <h3 data-result-title>Resultado pendiente</h3>
+            <p data-result-text>Tu resultado aparecera aqui al responder todas las preguntas.</p>
+          </section>
+        </div>
+
+        <div class="callout screening-callout reveal">
+          <strong>Recuerda:</strong>
+          <p>Si el resultado indica riesgo moderado o alto, o si los sintomas son intensos, lo adecuado es acudir a una evaluacion medica. No te automediques con hierro.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div data-footer></div>
+  <script src="../js/components.js"></script>
+  <script src="../js/scripts.js"></script>
+</body>
+</html>
