@@ -1,19 +1,35 @@
 <!DOCTYPE html>
+<!-- Comentario general de esta pagina: Pagina de recetas: presenta preparaciones con ingredientes utiles contra la anemia. -->
+<!-- DOCTYPE le dice al navegador que este archivo usa HTML5. -->
 <html lang="es">
 <head>
+  <!-- HEAD: aqui van datos que el navegador necesita, pero que no se ven como contenido principal. -->
+  <!-- UTF-8 permite usar caracteres del espanol y simbolos correctamente. -->
   <meta charset="UTF-8" />
+  <!-- Viewport hace que la pagina se adapte bien a celulares, tablets y computadoras. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- TITLE es el texto que aparece en la pestana del navegador. -->
   <title>NUTRIFE | Recetas</title>
+  <!-- Favicon: icono pequeno que aparece en la pestana del navegador. -->
   <link rel="icon" type="image/png" href="../faviIcon.png" />
+  <!-- Fuente externa de Google Fonts para que el diseno tenga una tipografia mas amigable. -->
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Archivo CSS principal: contiene colores, tamanos, columnas, tarjetas y diseno responsive. -->
   <link href="../css/styles.css" rel="stylesheet" />
 </head>
 <body data-page="recetas">
+  <!-- data-page indica a JavaScript que pagina esta abierta para marcar el enlace activo del menu. -->
+  <!-- Aqui JavaScript inserta el menu de navegacion comun a todas las paginas. -->
   <div data-nav></div>
+  <!-- Aqui JavaScript crea el encabezado usando los textos guardados en data-title, data-kicker y data-description. -->
   <div data-header data-title="Recetas contra la anemia" data-kicker="Cocina saludable" data-description="Preparaciones simples con ingredientes ricos en hierro y combinaciones que favorecen su absorcion."></div>
+  <!-- MAIN contiene el contenido unico de esta pagina. -->
   <main>
+    <!-- SECTION separa un bloque grande de informacion dentro de la pagina. -->
     <section>
+      <!-- container centra el contenido y evita que ocupe todo el ancho de la pantalla. -->
       <div class="container">
+        <!-- recipe-grid contiene todas las recetas del proyecto. -->
         <div class="recipe-grid reveal">
           <!-- TORTILLA DE ATÚN -->
 <article class="recipe-card">
@@ -217,8 +233,11 @@
       </div>
     </section>
   </main>
+  <!-- Aqui JavaScript inserta el pie de pagina compartido del proyecto. -->
   <div data-footer></div>
+  <!-- components.js construye automaticamente el menu, el encabezado y el pie de pagina. -->
   <script src="../js/components.js"></script>
+  <!-- scripts.js agrega animaciones, acordeones y el funcionamiento del test de anemia. -->
   <script src="../js/scripts.js"></script>
 </body>
 </html>

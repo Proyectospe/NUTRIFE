@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- HEAD: aqui van datos que el navegador necesita, pero que no se ven como contenido principal. -->
+  <!-- UTF-8 permite usar caracteres del espanol y simbolos correctamente. -->
   <meta charset="UTF-8" />
+  <!-- Viewport hace que la pagina se adapte bien a celulares, tablets y computadoras. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- TITLE es el texto que aparece en la pestana del navegador. -->
   <title>NUTRIFE | Alimentos</title>
+  <!-- Favicon: icono pequeno que aparece en la pestana del navegador. -->
   <link rel="icon" type="image/png" href="../faviIcon.png" />
+  <!-- Fuente externa de Google Fonts para que el diseno tenga una tipografia mas amigable. -->
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Archivo CSS principal: contiene colores, tamanos, columnas, tarjetas y diseno responsive. -->
   <link href="../css/styles.css" rel="stylesheet" />
 </head>
 <body data-page="alimentos">
+  <!-- data-page indica a JavaScript que pagina esta abierta para marcar el enlace activo del menu. -->
+  <!-- Aqui JavaScript inserta el menu de navegacion comun a todas las paginas. -->
   <div data-nav></div>
+  <!-- Aqui JavaScript crea el encabezado usando los textos guardados en data-title, data-kicker y data-description. -->
   <div data-header data-title="Alimentos ricos en hierro" data-kicker="Nutricion" data-description="La alimentacion ayuda mucho cuando se combina hierro, vitamina C y buenos habitos durante las comidas."></div>
+  <!-- MAIN contiene el contenido unico de esta pagina. -->
   <main>
+    <!-- SECTION separa un bloque grande de informacion dentro de la pagina. -->
     <section>
+      <!-- container centra el contenido y evita que ocupe todo el ancho de la pantalla. -->
       <div class="container">
+        <!-- info-panel crea una zona con texto e imagen en columnas. -->
         <div class="info-panel reveal">
           <div>
             <p class="eyebrow">Lo mas importante</p>
@@ -23,12 +37,14 @@
           <img src="../imagenes/alimentosAnemia.webp" alt="Alimentos ricos en hierro" class="panel-img" />
         </div>
 
+        <!-- mini-grid organiza pequenos consejos en tarjetas. -->
         <div class="mini-grid reveal">
           <article class="mini-card lift-card"><span>Alta absorcion</span><h3>Sangrecita, higado y carnes</h3><p>Son fuentes de hierro hem, el tipo que el cuerpo aprovecha con mayor facilidad.</p></article>
           <article class="mini-card lift-card"><span>Buen complemento</span><h3>Lentejas, frejoles y garbanzos</h3><p>Aportan hierro vegetal, fibra y energia. Funcionan mejor con limon o ensalada fresca.</p></article>
           <article class="mini-card lift-card"><span>Aliado</span><h3>Vitamina C</h3><p>Ayuda a absorber el hierro vegetal. Puede venir de citricos, tomate, pimiento o frutas locales.</p></article>
         </div>
 
+        <!-- table-wrap envuelve la tabla para controlarla mejor en pantallas pequenas. -->
         <div class="table-wrap reveal">
           <table class="alimentos-tabla">
             <thead><tr><th>Alimento</th><th>Tipo de hierro</th><th>Como aprovecharlo mejor</th></tr></thead>
@@ -41,6 +57,7 @@
           </table>
         </div>
 
+        <!-- callout resalta una idea importante para que no pase desapercibida. -->
         <div class="callout reveal">
           <strong>Para recordar:</strong>
           <p>El te, el cafe y algunas gaseosas pueden reducir la absorcion del hierro si se toman junto con la comida. Mejor dejarlos para otro momento del dia.</p>
@@ -48,8 +65,11 @@
       </div>
     </section>
   </main>
+  <!-- Aqui JavaScript inserta el pie de pagina compartido del proyecto. -->
   <div data-footer></div>
+  <!-- components.js construye automaticamente el menu, el encabezado y el pie de pagina. -->
   <script src="../js/components.js"></script>
+  <!-- scripts.js agrega animaciones, acordeones y el funcionamiento del test de anemia. -->
   <script src="../js/scripts.js"></script>
 </body>
 </html>

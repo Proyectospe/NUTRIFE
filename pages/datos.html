@@ -1,19 +1,35 @@
 <!DOCTYPE html>
+<!-- Comentario general de esta pagina: Pagina de datos: explica por que la anemia es importante y enlaza fuentes recomendadas. -->
+<!-- DOCTYPE le dice al navegador que este archivo usa HTML5. -->
 <html lang="es">
 <head>
+  <!-- HEAD: aqui van datos que el navegador necesita, pero que no se ven como contenido principal. -->
+  <!-- UTF-8 permite usar caracteres del espanol y simbolos correctamente. -->
   <meta charset="UTF-8" />
+  <!-- Viewport hace que la pagina se adapte bien a celulares, tablets y computadoras. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- TITLE es el texto que aparece en la pestana del navegador. -->
   <title>NUTRIFE | Datos</title>
+  <!-- Favicon: icono pequeno que aparece en la pestana del navegador. -->
   <link rel="icon" type="image/png" href="../faviIcon.png" />
+  <!-- Fuente externa de Google Fonts para que el diseno tenga una tipografia mas amigable. -->
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Archivo CSS principal: contiene colores, tamanos, columnas, tarjetas y diseno responsive. -->
   <link href="../css/styles.css" rel="stylesheet" />
 </head>
 <body data-page="datos">
+  <!-- data-page indica a JavaScript que pagina esta abierta para marcar el enlace activo del menu. -->
+  <!-- Aqui JavaScript inserta el menu de navegacion comun a todas las paginas. -->
   <div data-nav></div>
+  <!-- Aqui JavaScript crea el encabezado usando los textos guardados en data-title, data-kicker y data-description. -->
   <div data-header data-title="Datos importantes" data-kicker="Investigacion" data-description="Los datos ayudan a dimensionar el problema y explicar por que la prevencion de la anemia es una prioridad."></div>
+  <!-- MAIN contiene el contenido unico de esta pagina. -->
   <main>
+    <!-- SECTION separa un bloque grande de informacion dentro de la pagina. -->
     <section>
+      <!-- container centra el contenido y evita que ocupe todo el ancho de la pantalla. -->
       <div class="container">
+        <!-- info-panel crea una zona con texto e imagen en columnas. -->
         <div class="info-panel reveal">
           <div>
             <p class="eyebrow">Para explicar con claridad</p>
@@ -27,6 +43,7 @@
             />
         </div>
 
+        <!-- stats-grid muestra datos importantes en tarjetas. -->
         <div class="stats-grid reveal stagger">
           <article class="stat-card lift-card"><strong>Oxigeno</strong><p>La hemoglobina transporta oxigeno. Si baja, el cuerpo puede sentirse cansado incluso con actividades simples.</p></article>
           <article class="stat-card lift-card"><strong>Ninos</strong><p>La anemia infantil puede afectar concentracion, aprendizaje, crecimiento y defensas si no se trata a tiempo.</p></article>
@@ -39,6 +56,7 @@
           <p>La anemia no siempre se nota al inicio. Sin embargo, cuando la hemoglobina baja, el cuerpo recibe menos oxigeno y puede disminuir la energia, la atencion y el rendimiento diario. La prevencion combina alimentos ricos en hierro, vitamina C, controles y seguimiento medico.</p>
         </div>
 
+        <!-- links-section agrupa enlaces a fuentes externas confiables. -->
         <div class="links-section reveal">
           <h2 class="links-titulo">Fuentes recomendadas</h2>
           <div class="links-grid">
@@ -50,8 +68,11 @@
       </div>
     </section>
   </main>
+  <!-- Aqui JavaScript inserta el pie de pagina compartido del proyecto. -->
   <div data-footer></div>
+  <!-- components.js construye automaticamente el menu, el encabezado y el pie de pagina. -->
   <script src="../js/components.js"></script>
+  <!-- scripts.js agrega animaciones, acordeones y el funcionamiento del test de anemia. -->
   <script src="../js/scripts.js"></script>
 </body>
 </html>

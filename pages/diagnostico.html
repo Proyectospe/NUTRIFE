@@ -1,24 +1,40 @@
 <!DOCTYPE html>
+<!-- Comentario general de esta pagina: Pagina interactiva: explica el diagnostico real y contiene el test orientativo. -->
+<!-- DOCTYPE le dice al navegador que este archivo usa HTML5. -->
 <html lang="es">
 <head>
+  <!-- HEAD: aqui van datos que el navegador necesita, pero que no se ven como contenido principal. -->
+  <!-- UTF-8 permite usar caracteres del espanol y simbolos correctamente. -->
   <meta charset="UTF-8" />
+  <!-- Viewport hace que la pagina se adapte bien a celulares, tablets y computadoras. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- TITLE es el texto que aparece en la pestana del navegador. -->
   <title>NUTRIFE | Test de riesgo</title>
+  <!-- Favicon: icono pequeno que aparece en la pestana del navegador. -->
   <link rel="icon" type="image/png" href="../faviIcon.png" />
+  <!-- Fuente externa de Google Fonts para que el diseno tenga una tipografia mas amigable. -->
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Archivo CSS principal: contiene colores, tamanos, columnas, tarjetas y diseno responsive. -->
   <link href="../css/styles.css" rel="stylesheet" />
 </head>
 <body data-page="diagnostico">
+  <!-- data-page indica a JavaScript que pagina esta abierta para marcar el enlace activo del menu. -->
+  <!-- Aqui JavaScript inserta el menu de navegacion comun a todas las paginas. -->
   <div data-nav></div>
+  <!-- Aqui JavaScript crea el encabezado usando los textos guardados en data-title, data-kicker y data-description. -->
   <div data-header data-title="Test de riesgo de anemia" data-kicker="Orientativo" data-description="Primero conoce como se confirma la anemia y luego realiza un test segun tu tipo de persona."></div>
+  <!-- MAIN contiene el contenido unico de esta pagina. -->
   <main>
+    <!-- SECTION separa un bloque grande de informacion dentro de la pagina. -->
     <section>
+      <!-- container centra el contenido y evita que ocupe todo el ancho de la pantalla. -->
       <div class="container">
         <div class="screening-alert reveal">
           <strong>Importante</strong>
           <p>Este test no diagnostica anemia. Solo estima un nivel de riesgo segun respuestas sobre sintomas y factores personales. El diagnostico real se confirma con evaluacion medica y analisis de sangre.</p>
         </div>
 
+        <!-- info-panel crea una zona con texto e imagen en columnas. -->
         <div class="info-panel reveal">
           <div>
             <p class="eyebrow">Diagnostico real</p>
@@ -32,12 +48,14 @@
             />   
         </div>
 
+        <!-- timeline muestra pasos ordenados como una pequena linea de tiempo. -->
         <div class="timeline reveal">
           <article><span>1</span><h3>Consulta</h3><p>Se revisan sintomas, dieta, antecedentes y posibles perdidas de sangre.</p></article>
           <article><span>2</span><h3>Hemograma</h3><p>La prueba mide hemoglobina y ayuda a confirmar si existe anemia.</p></article>
           <article><span>3</span><h3>Causa</h3><p>Otros examenes pueden identificar si falta hierro, vitaminas u otra condicion.</p></article>
         </div>
 
+        <!-- callout resalta una idea importante para que no pase desapercibida. -->
         <div class="callout reveal">
           <strong>Ninos y bebes:</strong>
           <p>En bebes y ninos pequenos la evaluacion debe hacerla personal de salud, porque los valores normales cambian por edad y el crecimiento. Esta pagina los incluye como informacion, pero el test interactivo esta pensado para adolescentes y adultos.</p>
@@ -52,6 +70,7 @@
           <a class="action-link" href="#test-anemia">Empezar test</a>
         </div>
 
+        <!-- anemia-test es el contenedor del test interactivo controlado por JavaScript. -->
         <div class="anemia-test reveal" id="test-anemia" data-anemia-test>
           <div class="test-top">
             <div>
@@ -66,24 +85,27 @@
             </div>
           </div>
 
+          <!-- profile-grid contiene los botones para escoger el perfil del usuario del test. -->
           <div class="profile-grid" data-profile-grid>
-            <button type="button" class="profile-card" data-profile="adolescente"><span>Adolescente</span><small>12 a 17 anos</small></button>
-            <button type="button" class="profile-card" data-profile="hombre"><span>Hombre adulto</span><small>18 a 59 anos</small></button>
-            <button type="button" class="profile-card" data-profile="mujer"><span>Mujer adulta</span><small>18 a 59 anos</small></button>
+            <button type="button" class="profile-card" data-profile="adolescente"><span>Adolescente</span><small>12 a 17 años</small></button>
+            <button type="button" class="profile-card" data-profile="hombre"><span>Hombre adulto</span><small>18 a 59 años</small></button>
+            <button type="button" class="profile-card" data-profile="mujer"><span>Mujer adulta</span><small>18 a 59 años</small></button>
             <button type="button" class="profile-card" data-profile="gestante"><span>Gestante o lactante</span><small>Mayor necesidad de hierro</small></button>
-            <button type="button" class="profile-card" data-profile="adulto-mayor"><span>Adulto mayor</span><small>60 anos o mas</small></button>
+            <button type="button" class="profile-card" data-profile="adulto-mayor"><span>Adulto mayor</span><small>60 años o más</small></button>
           </div>
 
           <div class="test-progress" aria-hidden="true">
             <span data-test-progress></span>
           </div>
 
+          <!-- test-form es el formulario donde JavaScript carga las preguntas del test. -->
           <form class="test-form" data-test-form>
             <div class="test-empty">
               Selecciona un perfil para cargar preguntas especificas.
             </div>
           </form>
 
+          <!-- test-result muestra el resultado final del test de forma orientativa. -->
           <section class="test-result" data-test-result aria-live="polite">
             <div class="result-meter"><span data-result-meter></span></div>
             <p class="result-label" data-result-label>Completa el test para ver tu resultado.</p>
@@ -99,8 +121,11 @@
       </div>
     </section>
   </main>
+  <!-- Aqui JavaScript inserta el pie de pagina compartido del proyecto. -->
   <div data-footer></div>
+  <!-- components.js construye automaticamente el menu, el encabezado y el pie de pagina. -->
   <script src="../js/components.js"></script>
+  <!-- scripts.js agrega animaciones, acordeones y el funcionamiento del test de anemia. -->
   <script src="../js/scripts.js"></script>
 </body>
 </html>

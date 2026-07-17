@@ -1,1003 +1,1024 @@
+/* Comentario general del CSS:
+   Este archivo controla la apariencia visual de todo el sitio NUTRIFE.
+   Aqui se definen colores, tamanos, espacios, columnas, tarjetas, animaciones
+   y reglas responsive para que la pagina funcione en celular y computadora. */
+
+/* :root guarda variables reutilizables. Si se cambia un color aqui, cambia en todo el sitio donde se use var(...). */
 :root {
-  --rojo: #D85A30;
-  --rojo-claro: #FAECE7;
-  --rojo-medio: #F0997B;
-  --rojo-oscuro: #993C1D;
-  --amarillo: #EF9F27;
-  --amarillo-claro: #FAEEDA;
-  --verde: #1D9E75;
-  --verde-claro: #E1F5EE;
-  --azul: #185FA5;
-  --azul-claro: #E6F1FB;
-  --gris: #5F5E5A;
-  --gris-claro: #F1EFE8;
-  --blanco: #fff;
-  --texto: #2C2C2A;
-  --max-w: 1440px;
-  --px: clamp(1rem, 4vw, 2.5rem);
+  --rojo: #D85A30; /* guarda el color rojo principal del sitio. */
+  --rojo-claro: #FAECE7; /* guarda un rojo claro para fondos suaves. */
+  --rojo-medio: #F0997B; /* guarda un rojo medio para bordes y detalles. */
+  --rojo-oscuro: #993C1D; /* guarda un rojo oscuro para textos o botones. */
+  --amarillo: #EF9F27; /* guarda el color amarillo principal. */
+  --amarillo-claro: #FAEEDA; /* guarda un amarillo claro para fondos. */
+  --verde: #1D9E75; /* guarda el color verde principal. */
+  --verde-claro: #E1F5EE; /* guarda un verde claro para fondos. */
+  --azul: #185FA5; /* guarda el color azul principal. */
+  --azul-claro: #E6F1FB; /* guarda un azul claro para fondos. */
+  --gris: #5F5E5A; /* guarda un gris para textos secundarios. */
+  --gris-claro: #F1EFE8; /* guarda un gris claro para fondos y bordes. */
+  --blanco: #fff; /* guarda el color blanco para reutilizarlo. */
+  --texto: #2C2C2A; /* guarda el color principal del texto. */
+  --max-w: 1440px; /* define el ancho maximo general del contenido. */
+  --px: clamp(1rem, 4vw, 2.5rem); /* define el espacio lateral responsive del sitio. */
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* Reset basico: quita margenes por defecto y hace que los tamanos sean mas faciles de calcular. */
+* { margin: 0; /* define el espacio exterior del elemento. */ padding: 0; /* define el espacio interno del elemento. */ box-sizing: border-box; /* hace que el padding y borde cuenten dentro del tamaño total. */ }
 
 img {
-  max-width: 100%;
-  height: auto;
+  max-width: 100%; /* limita el ancho maximo. */
+  height: auto; /* define la altura del elemento. */
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
-  background: #fff9f6;
-  color: var(--texto);
-  overflow-x: hidden;
-  padding-top: 58px;
+  font-family: 'Nunito', sans-serif; /* define la familia tipografica del texto. */
+  background: #fff9f6; /* define el fondo del elemento. */
+  color: var(--texto); /* define el color del texto. */
+  overflow-x: hidden; /* controla el desborde horizontal. */
+  padding-top: 58px; /* define la propiedad CSS padding-top. */
 }
 
 /* ===== HEADER ===== */
+/* Encabezado principal: usa una imagen de fondo, texto centrado y una capa oscura para leer mejor. */
 header {
-  background: linear-gradient(rgba(0,0,0,0.28), rgba(0,0,0,0.18)), url("../imagenes/banner.png") center center/cover no-repeat;
-  background-attachment: scroll;
-  color: white;
-  text-align: center;
-  padding: 4rem var(--px) 5rem;
-  position: relative;
-  overflow: hidden;
-  margin-top: 0;
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
+  background: linear-gradient(rgba(0,0,0,0.28), rgba(0,0,0,0.18)), url("../imagenes/banner.png") center center/cover no-repeat; /* define el fondo del elemento. */
+  background-attachment: scroll; /* controla si el fondo se mueve o queda fijo al hacer scroll. */
+  color: white; /* define el color del texto. */
+  text-align: center; /* alinea el texto. */
+  padding: 4rem var(--px) 5rem; /* define el espacio interno del elemento. */
+  position: relative; /* define como se posiciona el elemento. */
+  overflow: hidden; /* controla que pasa si el contenido se sale del contenedor. */
+  margin-top: 0; /* define el espacio exterior superior. */
+  min-height: 100vh; /* define una altura minima. */
+  display: grid; /* define como se comporta el elemento en el layout. */
+  place-items: center; /* centra elementos en grid en ambos ejes. */
 }
 header::before {
-  content: '';
-  position: absolute;
-  bottom: -2px; left: 0; right: 0;
-  height: 64px;
-  background: #fff9f6;
-  clip-path: ellipse(55% 100% at 50% 100%);
-  z-index: 2;
+  content: ''; /* crea contenido para pseudo-elementos como before o after. */
+  position: absolute; /* define como se posiciona el elemento. */
+  bottom: -2px; /* ubica el elemento desde la parte inferior. */ left: 0; /* ubica el elemento desde la izquierda. */ right: 0; /* ubica el elemento desde la derecha. */
+  height: 64px; /* define la altura del elemento. */
+  background: #fff9f6; /* define el fondo del elemento. */
+  clip-path: ellipse(55% 100% at 50% 100%); /* recorta el elemento con una forma especial. */
+  z-index: 2; /* define que elemento queda encima de otro. */
 }
 
 /* capa oscura sobre la imagen para mejorar contraste */
 header::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.35);
-  z-index: 1;
+  content: ''; /* crea contenido para pseudo-elementos como before o after. */
+  position: absolute; /* define como se posiciona el elemento. */
+  inset: 0; /* ubica el elemento desde todos sus lados a la vez. */
+  background: rgba(0,0,0,0.35); /* define el fondo del elemento. */
+  z-index: 1; /* define que elemento queda encima de otro. */
 }
 
 /* asegurar que el contenido del header esté por encima del overlay */
 header > * {
-  position: relative;
-  z-index: 3;
+  position: relative; /* define como se posiciona el elemento. */
+  z-index: 3; /* define que elemento queda encima de otro. */
 }
 header .etiqueta {
-  display: inline-block;
-  background: rgba(255,255,255,0.22);
-  border: 2px solid rgba(255,255,255,0.45);
-  border-radius: 30px;
-  padding: 6px 18px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 1.2rem;
+  display: inline-block; /* define como se comporta el elemento en el layout. */
+  background: rgba(255,255,255,0.22); /* define el fondo del elemento. */
+  border: 2px solid rgba(255,255,255,0.45); /* define grosor, tipo y color del borde. */
+  border-radius: 30px; /* redondea las esquinas del elemento. */
+  padding: 6px 18px; /* define el espacio interno del elemento. */
+  font-size: 0.8rem; /* define el tamaño del texto. */
+  font-weight: 700; /* define el grosor de la letra. */
+  letter-spacing: 1.5px; /* define el espacio entre letras. */
+  text-transform: uppercase; /* cambia mayusculas o minusculas del texto. */
+  margin-bottom: 1.2rem; /* define el espacio exterior inferior. */
 }
 header h1 {
-  font-family: 'Fredoka One', cursive;
-  font-size: clamp(3rem, 7vw, 5.2rem);
-  line-height: 1;
-  margin-bottom: 0.8rem;
-  text-shadow: 3px 3px 0 rgba(0,0,0,0.18);
-  width: 100%;
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  font-size: clamp(3rem, 7vw, 5.2rem); /* define el tamaño del texto. */
+  line-height: 1; /* define la altura de cada linea de texto. */
+  margin-bottom: 0.8rem; /* define el espacio exterior inferior. */
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.18); /* agrega sombra al texto. */
+  width: 100%; /* define el ancho del elemento. */
 }
 .hero-logo {
-  width: clamp(260px, 64vw, 760px);
-  height: auto;
-  max-height: clamp(120px, 24vh, 260px);
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-  filter: drop-shadow(3px 4px 0 rgba(0,0,0,0.16));
+  width: clamp(260px, 64vw, 760px); /* define el ancho del elemento. */
+  height: auto; /* define la altura del elemento. */
+  max-height: clamp(120px, 24vh, 260px); /* limita la altura maxima. */
+  object-fit: contain; /* controla como una imagen o video llena su contenedor. */
+  display: block; /* define como se comporta el elemento en el layout. */
+  margin: 0 auto; /* define el espacio exterior del elemento. */
+  filter: drop-shadow(3px 4px 0 rgba(0,0,0,0.16)); /* aplica efectos visuales como sombra o filtro. */
 }
 header p {
-  font-size: clamp(1rem, 2.1vw, 1.1rem);
-  opacity: 0.95;
-  max-width: 760px;
-  margin: 0 auto;
-  line-height: 1.9;
+  font-size: clamp(1rem, 2.1vw, 1.1rem); /* define el tamaño del texto. */
+  opacity: 0.95; /* define la transparencia del elemento. */
+  max-width: 760px; /* limita el ancho maximo. */
+  margin: 0 auto; /* define el espacio exterior del elemento. */
+  line-height: 1.9; /* define la altura de cada linea de texto. */
 }
 .globulos-deco {
-  position: absolute;
-  top: 10px; right: 16px;
-  font-size: 4rem;
-  opacity: 0.15;
+  position: absolute; /* define como se posiciona el elemento. */
+  top: 10px; /* ubica el elemento desde arriba. */ right: 16px; /* ubica el elemento desde la derecha. */
+  font-size: 4rem; /* define el tamaño del texto. */
+  opacity: 0.15; /* define la transparencia del elemento. */
 }
 
 /* ===== NAV ===== */
+/* Menu de navegacion fijo: permite moverse entre todas las paginas del proyecto. */
 nav {
-  background: var(--rojo-oscuro);
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  padding: 0.45rem var(--px);
+  background: var(--rojo-oscuro); /* define el fondo del elemento. */
+  display: flex; /* define como se comporta el elemento en el layout. */
+  justify-content: center; /* alinea los elementos en el eje horizontal o principal. */
+  flex-wrap: wrap; /* permite que los elementos flex bajen a otra linea. */
+  gap: 0.35rem; /* define el espacio entre elementos de grid o flex. */
+  position: sticky; /* define como se posiciona el elemento. */
+  top: 0; /* ubica el elemento desde arriba. */
+  z-index: 100; /* define que elemento queda encima de otro. */
+  padding: 0.45rem var(--px); /* define el espacio interno del elemento. */
 }
 nav a {
-  color: rgba(255,255,255,0.95);
-  text-decoration: none;
-  padding: 13px 18px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  transition: background 0.2s, color 0.2s;
-  white-space: nowrap;
+  color: rgba(255,255,255,0.95); /* define el color del texto. */
+  text-decoration: none; /* agrega o quita decoracion del texto, como subrayado. */
+  padding: 13px 18px; /* define el espacio interno del elemento. */
+  font-weight: 700; /* define el grosor de la letra. */
+  font-size: 0.95rem; /* define el tamaño del texto. */
+  transition: background 0.2s, color 0.2s; /* suaviza cambios visuales como color, sombra o movimiento. */
+  white-space: nowrap; /* controla los saltos de linea del texto. */
 }
-nav a:hover { background: rgba(255,255,255,0.12); color: white; }
+nav a:hover { background: rgba(255,255,255,0.12); /* define el fondo del elemento. */ color: white; /* define el color del texto. */ }
 
 /* ===== CONTENEDOR — ancho máximo con padding ajustado ===== */
 .container {
-  max-width: var(--max-w);
-  width: min(100%, var(--max-w));
-  margin: 0 auto;
-  padding: 0 var(--px);
+  max-width: var(--max-w); /* limita el ancho maximo. */
+  width: min(100%, var(--max-w)); /* define el ancho del elemento. */
+  margin: 0 auto; /* define el espacio exterior del elemento. */
+  padding: 0 var(--px); /* define el espacio interno del elemento. */
 }
 
 /* ===== SECCIONES ===== */
-section { padding: 1.8rem 0; }
-section:nth-child(even) { background: #fff; }
+/* Las secciones separan bloques de contenido y alternan fondos para mejorar la lectura. */
+section { padding: 1.8rem 0; /* define el espacio interno del elemento. */ }
+section:nth-child(even) { background: #fff; /* define el fondo del elemento. */ }
 
 .seccion-titulo {
-  font-family: 'Fredoka One', cursive;
-  font-size: clamp(1.6rem, 5vw, 2rem);
-  color: var(--rojo);
-  margin-bottom: 0.3rem;
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  font-size: clamp(1.6rem, 5vw, 2rem); /* define el tamaño del texto. */
+  color: var(--rojo); /* define el color del texto. */
+  margin-bottom: 0.3rem; /* define el espacio exterior inferior. */
 }
-.seccion-titulo span { color: var(--texto); }
+.seccion-titulo span { color: var(--texto); /* define el color del texto. */ }
 .linea-titulo {
-  width: 55px; height: 5px;
-  background: var(--rojo);
-  border-radius: 10px;
-  margin-bottom: 1.5rem;
+  width: 55px; /* define el ancho del elemento. */ height: 5px; /* define la altura del elemento. */
+  background: var(--rojo); /* define el fondo del elemento. */
+  border-radius: 10px; /* redondea las esquinas del elemento. */
+  margin-bottom: 1.5rem; /* define el espacio exterior inferior. */
 }
 
 /* ===== QUE ES ===== */
+/* Estilos para la pagina que explica el concepto de anemia. */
 .intro-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.8rem;
-  align-items: center;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: 1fr 1fr; /* define las columnas de una grilla. */
+  gap: 1.8rem; /* define el espacio entre elementos de grid o flex. */
+  align-items: center; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
 }
 .intro-texto p {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #3a3a38;
-  margin-bottom: 1rem;
+  font-size: 1rem; /* define el tamaño del texto. */
+  line-height: 1.8; /* define la altura de cada linea de texto. */
+  color: #3a3a38; /* define el color del texto. */
+  margin-bottom: 1rem; /* define el espacio exterior inferior. */
 }
 .dato-destacado {
-  background: var(--rojo-claro);
-  border-left: 5px solid var(--rojo);
-  border-radius: 0 12px 12px 0;
-  padding: 0.9rem 1.1rem;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--rojo-oscuro);
+  background: var(--rojo-claro); /* define el fondo del elemento. */
+  border-left: 5px solid var(--rojo); /* define el borde izquierdo. */
+  border-radius: 0 12px 12px 0; /* redondea las esquinas del elemento. */
+  padding: 0.9rem 1.1rem; /* define el espacio interno del elemento. */
+  font-size: 0.95rem; /* define el tamaño del texto. */
+  font-weight: 700; /* define el grosor de la letra. */
+  color: var(--rojo-oscuro); /* define el color del texto. */
 }
 
 /* ===== VIDEO ===== */
+/* Contenedor del video: mantiene proporcion 16:9 y bordes redondeados. */
 .video-container {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 5px 5px 0 var(--rojo-medio);
-  border: 4px solid var(--rojo-claro);
+  position: relative; /* define como se posiciona el elemento. */
+  width: 100%; /* define el ancho del elemento. */
+  aspect-ratio: 16 / 9; /* mantiene una proporcion fija entre ancho y alto. */
+  border-radius: 18px; /* redondea las esquinas del elemento. */
+  overflow: hidden; /* controla que pasa si el contenido se sale del contenedor. */
+  box-shadow: 5px 5px 0 var(--rojo-medio); /* agrega una sombra alrededor del elemento. */
+  border: 4px solid var(--rojo-claro); /* define grosor, tipo y color del borde. */
 }
 .video-container iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
+  width: 100%; /* define el ancho del elemento. */
+  height: 100%; /* define la altura del elemento. */
+  border: none; /* define grosor, tipo y color del borde. */
 }
 
 /* ===== TIPOS ===== */
+/* Tarjetas de tipos de anemia: cada clase tipo-* cambia el color de una tarjeta. */
 .tipos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 1rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); /* define las columnas de una grilla. */
+  gap: 1rem; /* define el espacio entre elementos de grid o flex. */
 }
 .tipo-card {
-  border-radius: 16px;
-  padding: 1.3rem;
-  text-align: center;
-  border: 3px solid transparent;
-  transition: transform 0.2s;
+  border-radius: 16px; /* redondea las esquinas del elemento. */
+  padding: 1.3rem; /* define el espacio interno del elemento. */
+  text-align: center; /* alinea el texto. */
+  border: 3px solid transparent; /* define grosor, tipo y color del borde. */
+  transition: transform 0.2s; /* suaviza cambios visuales como color, sombra o movimiento. */
 }
-.tipo-card:hover { transform: translateY(-5px); }
-.tipo-card .icono { font-size: 2.2rem; margin-bottom: 0.6rem; }
-.tipo-card h3 { font-size: 0.95rem; font-weight: 800; margin-bottom: 0.4rem; }
-.tipo-card p { font-size: 0.85rem; line-height: 1.6; }
-.tipo-1 { background: var(--rojo-claro); border-color: var(--rojo-medio); }
-.tipo-1 h3 { color: var(--rojo-oscuro); }
-.tipo-2 { background: var(--amarillo-claro); border-color: var(--amarillo); }
-.tipo-2 h3 { color: #633806; }
-.tipo-3 { background: var(--azul-claro); border-color: #85B7EB; }
-.tipo-3 h3 { color: var(--azul); }
-.tipo-4 { background: var(--verde-claro); border-color: #5DCAA5; }
-.tipo-4 h3 { color: #085041; }
+.tipo-card:hover { transform: translateY(-5px); /* mueve, rota o escala visualmente el elemento. */ }
+.tipo-card .icono { font-size: 2.2rem; /* define el tamaño del texto. */ margin-bottom: 0.6rem; /* define el espacio exterior inferior. */ }
+.tipo-card h3 { font-size: 0.95rem; /* define el tamaño del texto. */ font-weight: 800; /* define el grosor de la letra. */ margin-bottom: 0.4rem; /* define el espacio exterior inferior. */ }
+.tipo-card p { font-size: 0.85rem; /* define el tamaño del texto. */ line-height: 1.6; /* define la altura de cada linea de texto. */ }
+.tipo-1 { background: var(--rojo-claro); /* define el fondo del elemento. */ border-color: var(--rojo-medio); /* define el color del borde. */ }
+.tipo-1 h3 { color: var(--rojo-oscuro); /* define el color del texto. */ }
+.tipo-2 { background: var(--amarillo-claro); /* define el fondo del elemento. */ border-color: var(--amarillo); /* define el color del borde. */ }
+.tipo-2 h3 { color: #633806; /* define el color del texto. */ }
+.tipo-3 { background: var(--azul-claro); /* define el fondo del elemento. */ border-color: #85B7EB; /* define el color del borde. */ }
+.tipo-3 h3 { color: var(--azul); /* define el color del texto. */ }
+.tipo-4 { background: var(--verde-claro); /* define el fondo del elemento. */ border-color: #5DCAA5; /* define el color del borde. */ }
+.tipo-4 h3 { color: #085041; /* define el color del texto. */ }
 
 /* ===== BANNER NIÑOS ===== */
 .ninos-banner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  background: var(--rojo-claro);
-  border-radius: 18px;
-  padding: 1.2rem 1.5rem;
-  margin-bottom: 1.5rem;
-  border: 3px solid var(--rojo-medio);
+  display: flex; /* define como se comporta el elemento en el layout. */
+  align-items: center; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
+  justify-content: center; /* alinea los elementos en el eje horizontal o principal. */
+  gap: 1.5rem; /* define el espacio entre elementos de grid o flex. */
+  background: var(--rojo-claro); /* define el fondo del elemento. */
+  border-radius: 18px; /* redondea las esquinas del elemento. */
+  padding: 1.2rem 1.5rem; /* define el espacio interno del elemento. */
+  margin-bottom: 1.5rem; /* define el espacio exterior inferior. */
+  border: 3px solid var(--rojo-medio); /* define grosor, tipo y color del borde. */
 }
 .nino-img {
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
-  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
+  width: 200px; /* define el ancho del elemento. */
+  height: 200px; /* define la altura del elemento. */
+  object-fit: contain; /* controla como una imagen o video llena su contenedor. */
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15)); /* aplica efectos visuales como sombra o filtro. */
 }
-.ninos-texto { text-align: center; max-width: 380px; }
+.ninos-texto { text-align: center; /* alinea el texto. */ max-width: 380px; /* limita el ancho maximo. */ }
 .ninos-texto p {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: var(--rojo-oscuro);
+  font-size: 0.95rem; /* define el tamaño del texto. */
+  line-height: 1.7; /* define la altura de cada linea de texto. */
+  color: var(--rojo-oscuro); /* define el color del texto. */
 }
 
 /* ===== CAUSAS Y SINTOMAS ===== */
+/* Columnas y listas para explicar causas y sintomas de forma comparativa. */
 .dos-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: 1fr 1fr; /* define las columnas de una grilla. */
+  gap: 1.5rem; /* define el espacio entre elementos de grid o flex. */
 }
 .lista-card {
-  border-radius: 16px;
-  padding: 1.3rem;
-  border: 3px solid;
+  border-radius: 16px; /* redondea las esquinas del elemento. */
+  padding: 1.3rem; /* define el espacio interno del elemento. */
+  border: 3px solid; /* define grosor, tipo y color del borde. */
 }
 .lista-card h3 {
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.2rem;
-  margin-bottom: 0.9rem;
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  font-size: 1.2rem; /* define el tamaño del texto. */
+  margin-bottom: 0.9rem; /* define el espacio exterior inferior. */
 }
-.lista-card ul { list-style: none; }
+.lista-card ul { list-style: none; /* controla el estilo de las viñetas o numeracion. */ }
 .lista-card ul li {
-  padding: 6px 0;
-  border-bottom: 1px dashed rgba(0,0,0,0.1);
-  font-size: 0.92rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
+  padding: 6px 0; /* define el espacio interno del elemento. */
+  border-bottom: 1px dashed rgba(0,0,0,0.1); /* define el borde inferior. */
+  font-size: 0.92rem; /* define el tamaño del texto. */
+  display: flex; /* define como se comporta el elemento en el layout. */
+  align-items: flex-start; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
+  gap: 8px; /* define el espacio entre elementos de grid o flex. */
 }
-.lista-card ul li:last-child { border-bottom: none; }
+.lista-card ul li:last-child { border-bottom: none; /* define el borde inferior. */ }
 .lista-card ul li::before {
-  content: '●';
-  font-size: 9px;
-  margin-top: 5px;
-  flex-shrink: 0;
+  content: '●'; /* crea contenido para pseudo-elementos como before o after. */
+  font-size: 9px; /* define el tamaño del texto. */
+  margin-top: 5px; /* define el espacio exterior superior. */
+  flex-shrink: 0; /* evita o permite que un elemento se reduzca. */
 }
-.card-causas { background: var(--rojo-claro); border-color: var(--rojo-medio); }
-.card-causas h3 { color: var(--rojo-oscuro); }
-.card-causas li::before { color: var(--rojo); }
-.card-sintomas { background: var(--amarillo-claro); border-color: var(--amarillo); }
-.card-sintomas h3 { color: #633806; }
-.card-sintomas li::before { color: var(--amarillo); }
+.card-causas { background: var(--rojo-claro); /* define el fondo del elemento. */ border-color: var(--rojo-medio); /* define el color del borde. */ }
+.card-causas h3 { color: var(--rojo-oscuro); /* define el color del texto. */ }
+.card-causas li::before { color: var(--rojo); /* define el color del texto. */ }
+.card-sintomas { background: var(--amarillo-claro); /* define el fondo del elemento. */ border-color: var(--amarillo); /* define el color del borde. */ }
+.card-sintomas h3 { color: #633806; /* define el color del texto. */ }
+.card-sintomas li::before { color: var(--amarillo); /* define el color del texto. */ }
 
 /* ===== IMAGEN FULL ===== */
 /* Ajusta aquí el tamaño de la imagen de alimentosAnemia */
 .img-full {
-  width: 100%;
-  max-height: 700px;
-  object-fit: cover;
-  border-radius: 18px;
-  border: 4px solid var(--rojo-claro);
-  margin-bottom: 1.5rem;
-  display: block;
+  width: 100%; /* define el ancho del elemento. */
+  max-height: 700px; /* limita la altura maxima. */
+  object-fit: cover; /* controla como una imagen o video llena su contenedor. */
+  border-radius: 18px; /* redondea las esquinas del elemento. */
+  border: 4px solid var(--rojo-claro); /* define grosor, tipo y color del borde. */
+  margin-bottom: 1.5rem; /* define el espacio exterior inferior. */
+  display: block; /* define como se comporta el elemento en el layout. */
 }
 
 /* ===== ACORDEÓN DIAGNÓSTICO ===== */
 .acordeon {
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-  margin-bottom: 0.5rem;
+  display: flex; /* define como se comporta el elemento en el layout. */
+  flex-direction: column; /* define la direccion de los elementos flex. */
+  gap: 0.55rem; /* define el espacio entre elementos de grid o flex. */
+  margin-bottom: 0.5rem; /* define el espacio exterior inferior. */
 }
 .acord-item {
-  border-radius: 14px;
-  border: 2px solid var(--gris-claro);
-  background: white;
-  overflow: hidden;
-  transition: border-color 0.25s, box-shadow 0.25s;
+  border-radius: 14px; /* redondea las esquinas del elemento. */
+  border: 2px solid var(--gris-claro); /* define grosor, tipo y color del borde. */
+  background: white; /* define el fondo del elemento. */
+  overflow: hidden; /* controla que pasa si el contenido se sale del contenedor. */
+  transition: border-color 0.25s, box-shadow 0.25s; /* suaviza cambios visuales como color, sombra o movimiento. */
 }
-.acord-item:hover { border-color: var(--rojo-medio); }
+.acord-item:hover { border-color: var(--rojo-medio); /* define el color del borde. */ }
 .acord-item.acord-open {
-  border-color: var(--rojo-medio);
-  box-shadow: 0 4px 16px rgba(216,90,48,0.12);
+  border-color: var(--rojo-medio); /* define el color del borde. */
+  box-shadow: 0 4px 16px rgba(216,90,48,0.12); /* agrega una sombra alrededor del elemento. */
 }
-.acord-clave { border-color: var(--rojo-medio) !important; }
-.acord-clave.acord-open { box-shadow: 0 4px 20px rgba(216,90,48,0.22) !important; }
-.acord-resultado { border-color: #5DCAA5 !important; }
-.acord-resultado.acord-open { box-shadow: 0 4px 20px rgba(29,158,117,0.18) !important; }
+.acord-clave { border-color: var(--rojo-medio) !important; /* define el color del borde. */ }
+.acord-clave.acord-open { box-shadow: 0 4px 20px rgba(216,90,48,0.22) !important; /* agrega una sombra alrededor del elemento. */ }
+.acord-resultado { border-color: #5DCAA5 !important; /* define el color del borde. */ }
+.acord-resultado.acord-open { box-shadow: 0 4px 20px rgba(29,158,117,0.18) !important; /* agrega una sombra alrededor del elemento. */ }
 
 .acord-header {
-  width: 100%;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.9rem 1.2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  text-align: left;
-  transition: background 0.2s;
+  width: 100%; /* define el ancho del elemento. */
+  background: none; /* define el fondo del elemento. */
+  border: none; /* define grosor, tipo y color del borde. */
+  cursor: pointer; /* cambia la forma del puntero del mouse. */
+  padding: 0.9rem 1.2rem; /* define el espacio interno del elemento. */
+  display: flex; /* define como se comporta el elemento en el layout. */
+  align-items: center; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
+  gap: 0.7rem; /* define el espacio entre elementos de grid o flex. */
+  text-align: left; /* alinea el texto. */
+  transition: background 0.2s; /* suaviza cambios visuales como color, sombra o movimiento. */
 }
-.acord-header:hover { background: var(--rojo-claro); }
-.acord-item.acord-resultado .acord-header:hover { background: var(--verde-claro); }
-.acord-item.acord-open .acord-header { background: var(--rojo-claro); }
-.acord-item.acord-resultado.acord-open .acord-header { background: var(--verde-claro); }
+.acord-header:hover { background: var(--rojo-claro); /* define el fondo del elemento. */ }
+.acord-item.acord-resultado .acord-header:hover { background: var(--verde-claro); /* define el fondo del elemento. */ }
+.acord-item.acord-open .acord-header { background: var(--rojo-claro); /* define el fondo del elemento. */ }
+.acord-item.acord-resultado.acord-open .acord-header { background: var(--verde-claro); /* define el fondo del elemento. */ }
 
 .acord-header-left {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  flex: 1;
-  min-width: 0;
+  display: flex; /* define como se comporta el elemento en el layout. */
+  align-items: center; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
+  gap: 0.65rem; /* define el espacio entre elementos de grid o flex. */
+  flex: 1; /* define cuanto espacio ocupa un elemento flexible. */
+  min-width: 0; /* define un ancho minimo. */
 }
 .acord-num {
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  background: var(--rojo-oscuro);
-  color: white;
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.05rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  width: 34px; /* define el ancho del elemento. */ height: 34px; /* define la altura del elemento. */
+  border-radius: 50%; /* redondea las esquinas del elemento. */
+  background: var(--rojo-oscuro); /* define el fondo del elemento. */
+  color: white; /* define el color del texto. */
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  font-size: 1.05rem; /* define el tamaño del texto. */
+  display: flex; /* define como se comporta el elemento en el layout. */
+  align-items: center; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
+  justify-content: center; /* alinea los elementos en el eje horizontal o principal. */
+  flex-shrink: 0; /* evita o permite que un elemento se reduzca. */
 }
-.acord-num-rojo { background: var(--rojo); box-shadow: 0 0 0 3px var(--rojo-claro); }
-.acord-num-verde { background: var(--verde); box-shadow: 0 0 0 3px var(--verde-claro); }
-.acord-emoji { font-size: 1.5rem; flex-shrink: 0; }
+.acord-num-rojo { background: var(--rojo); /* define el fondo del elemento. */ box-shadow: 0 0 0 3px var(--rojo-claro); /* agrega una sombra alrededor del elemento. */ }
+.acord-num-verde { background: var(--verde); /* define el fondo del elemento. */ box-shadow: 0 0 0 3px var(--verde-claro); /* agrega una sombra alrededor del elemento. */ }
+.acord-emoji { font-size: 1.5rem; /* define el tamaño del texto. */ flex-shrink: 0; /* evita o permite que un elemento se reduzca. */ }
 .acord-title {
-  font-weight: 800;
-  font-size: 0.97rem;
-  color: var(--texto);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-weight: 800; /* define el grosor de la letra. */
+  font-size: 0.97rem; /* define el tamaño del texto. */
+  color: var(--texto); /* define el color del texto. */
+  white-space: nowrap; /* controla los saltos de linea del texto. */
+  overflow: hidden; /* controla que pasa si el contenido se sale del contenedor. */
+  text-overflow: ellipsis; /* controla como se muestra texto que no cabe. */
 }
 .acord-tag {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 20px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  background: var(--gris-claro);
-  color: var(--gris);
-  flex-shrink: 0;
+  display: inline-block; /* define como se comporta el elemento en el layout. */
+  padding: 3px 10px; /* define el espacio interno del elemento. */
+  border-radius: 20px; /* redondea las esquinas del elemento. */
+  font-size: 0.72rem; /* define el tamaño del texto. */
+  font-weight: 700; /* define el grosor de la letra. */
+  background: var(--gris-claro); /* define el fondo del elemento. */
+  color: var(--gris); /* define el color del texto. */
+  flex-shrink: 0; /* evita o permite que un elemento se reduzca. */
 }
-.acord-tag-rojo { background: var(--rojo-claro); color: var(--rojo-oscuro); }
-.acord-tag-verde { background: var(--verde-claro); color: #085041; }
+.acord-tag-rojo { background: var(--rojo-claro); /* define el fondo del elemento. */ color: var(--rojo-oscuro); /* define el color del texto. */ }
+.acord-tag-verde { background: var(--verde-claro); /* define el fondo del elemento. */ color: #085041; /* define el color del texto. */ }
 .acord-chevron {
-  font-size: 1.2rem;
-  color: var(--gris);
-  transition: transform 0.3s ease;
-  flex-shrink: 0;
-  line-height: 1;
+  font-size: 1.2rem; /* define el tamaño del texto. */
+  color: var(--gris); /* define el color del texto. */
+  transition: transform 0.3s ease; /* suaviza cambios visuales como color, sombra o movimiento. */
+  flex-shrink: 0; /* evita o permite que un elemento se reduzca. */
+  line-height: 1; /* define la altura de cada linea de texto. */
 }
-.acord-item.acord-open .acord-chevron { transform: rotate(180deg); color: var(--rojo); }
-.acord-item.acord-resultado.acord-open .acord-chevron { color: var(--verde); }
+.acord-item.acord-open .acord-chevron { transform: rotate(180deg); /* mueve, rota o escala visualmente el elemento. */ color: var(--rojo); /* define el color del texto. */ }
+.acord-item.acord-resultado.acord-open .acord-chevron { color: var(--verde); /* define el color del texto. */ }
 
-.acord-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+.acord-body { max-height: 0; /* limita la altura maxima. */ overflow: hidden; /* controla que pasa si el contenido se sale del contenedor. */ transition: max-height 0.35s ease; /* suaviza cambios visuales como color, sombra o movimiento. */ }
 .acord-body-inner {
-  padding: 0 1.2rem 1.1rem 4.2rem;
-  border-top: 1px dashed var(--rojo-claro);
+  padding: 0 1.2rem 1.1rem 4.2rem; /* define el espacio interno del elemento. */
+  border-top: 1px dashed var(--rojo-claro); /* define el borde superior. */
 }
-.acord-item.acord-resultado .acord-body-inner { border-top-color: #5DCAA5; }
+.acord-item.acord-resultado .acord-body-inner { border-top-color: #5DCAA5; /* define la propiedad CSS border-top-color. */ }
 .acord-body-inner p {
-  font-size: 0.93rem;
-  line-height: 1.7;
-  color: var(--gris);
-  padding-top: 0.85rem;
+  font-size: 0.93rem; /* define el tamaño del texto. */
+  line-height: 1.7; /* define la altura de cada linea de texto. */
+  color: var(--gris); /* define el color del texto. */
+  padding-top: 0.85rem; /* define la propiedad CSS padding-top. */
 }
 
 /* ===== HEMOGLOBINA CARDS ===== */
+/* Tarjetas pequenas para mostrar valores o datos de hemoglobina. */
 .hemo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 0.9rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* define las columnas de una grilla. */
+  gap: 0.9rem; /* define el espacio entre elementos de grid o flex. */
 }
 .hemo-card {
-  background: white;
-  border: 2px solid var(--rojo-claro);
-  border-radius: 16px;
-  padding: 1.1rem 0.9rem;
-  text-align: center;
-  transition: transform 0.2s, border-color 0.2s;
+  background: white; /* define el fondo del elemento. */
+  border: 2px solid var(--rojo-claro); /* define grosor, tipo y color del borde. */
+  border-radius: 16px; /* redondea las esquinas del elemento. */
+  padding: 1.1rem 0.9rem; /* define el espacio interno del elemento. */
+  text-align: center; /* alinea el texto. */
+  transition: transform 0.2s, border-color 0.2s; /* suaviza cambios visuales como color, sombra o movimiento. */
 }
-.hemo-card:hover { transform: translateY(-4px); border-color: var(--rojo-medio); }
+.hemo-card:hover { transform: translateY(-4px); /* mueve, rota o escala visualmente el elemento. */ border-color: var(--rojo-medio); /* define el color del borde. */ }
 .hemo-destacado {
-  border: 3px solid var(--rojo);
-  background: var(--rojo-claro);
-  position: relative;
+  border: 3px solid var(--rojo); /* define grosor, tipo y color del borde. */
+  background: var(--rojo-claro); /* define el fondo del elemento. */
+  position: relative; /* define como se posiciona el elemento. */
 }
-.hemo-emoji { font-size: 1.9rem; margin-bottom: 0.35rem; }
+.hemo-emoji { font-size: 1.9rem; /* define el tamaño del texto. */ margin-bottom: 0.35rem; /* define el espacio exterior inferior. */ }
 .hemo-grupo {
-  font-size: 0.77rem;
-  color: var(--gris);
-  font-weight: 700;
-  margin-bottom: 0.45rem;
-  line-height: 1.3;
+  font-size: 0.77rem; /* define el tamaño del texto. */
+  color: var(--gris); /* define el color del texto. */
+  font-weight: 700; /* define el grosor de la letra. */
+  margin-bottom: 0.45rem; /* define el espacio exterior inferior. */
+  line-height: 1.3; /* define la altura de cada linea de texto. */
 }
 .hemo-valor {
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.5rem;
-  color: var(--rojo);
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  font-size: 1.5rem; /* define el tamaño del texto. */
+  color: var(--rojo); /* define el color del texto. */
 }
 .hemo-valor span {
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.82rem;
-  color: var(--gris);
-  font-weight: 700;
+  font-family: 'Nunito', sans-serif; /* define la familia tipografica del texto. */
+  font-size: 0.82rem; /* define el tamaño del texto. */
+  color: var(--gris); /* define el color del texto. */
+  font-weight: 700; /* define el grosor de la letra. */
 }
 .hemo-nota {
-  margin-top: 0.4rem;
-  font-size: 0.72rem;
-  font-weight: 800;
-  background: var(--rojo-medio);
-  color: white;
-  border-radius: 20px;
-  padding: 2px 10px;
-  display: inline-block;
+  margin-top: 0.4rem; /* define el espacio exterior superior. */
+  font-size: 0.72rem; /* define el tamaño del texto. */
+  font-weight: 800; /* define el grosor de la letra. */
+  background: var(--rojo-medio); /* define el fondo del elemento. */
+  color: white; /* define el color del texto. */
+  border-radius: 20px; /* redondea las esquinas del elemento. */
+  padding: 2px 10px; /* define el espacio interno del elemento. */
+  display: inline-block; /* define como se comporta el elemento en el layout. */
 }
 
 /* ===== PREVENCIÓN ===== */
 .prevencion-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 1rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); /* define las columnas de una grilla. */
+  gap: 1rem; /* define el espacio entre elementos de grid o flex. */
 }
 .prev-card {
-  background: white;
-  border-radius: 16px;
-  padding: 1.2rem;
-  border: 2px solid var(--verde-claro);
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
+  background: white; /* define el fondo del elemento. */
+  border-radius: 16px; /* redondea las esquinas del elemento. */
+  padding: 1.2rem; /* define el espacio interno del elemento. */
+  border: 2px solid var(--verde-claro); /* define grosor, tipo y color del borde. */
+  display: flex; /* define como se comporta el elemento en el layout. */
+  gap: 10px; /* define el espacio entre elementos de grid o flex. */
+  align-items: flex-start; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
 }
-.prev-card .emoji { font-size: 1.9rem; flex-shrink: 0; }
-.prev-card h4 { font-weight: 800; color: #085041; margin-bottom: 0.25rem; font-size: 0.92rem; }
-.prev-card p { font-size: 0.84rem; color: var(--gris); line-height: 1.5; }
+.prev-card .emoji { font-size: 1.9rem; /* define el tamaño del texto. */ flex-shrink: 0; /* evita o permite que un elemento se reduzca. */ }
+.prev-card h4 { font-weight: 800; /* define el grosor de la letra. */ color: #085041; /* define el color del texto. */ margin-bottom: 0.25rem; /* define el espacio exterior inferior. */ font-size: 0.92rem; /* define el tamaño del texto. */ }
+.prev-card p { font-size: 0.84rem; /* define el tamaño del texto. */ color: var(--gris); /* define el color del texto. */ line-height: 1.5; /* define la altura de cada linea de texto. */ }
 
 /* ===== ALIMENTOS ===== */
+/* Tabla y etiquetas para explicar alimentos ricos en hierro. */
 .alimentos-tabla {
-  width: 100%;
-  border-collapse: collapse;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 4px 0 var(--rojo-claro);
+  width: 100%; /* define el ancho del elemento. */
+  border-collapse: collapse; /* une los bordes de una tabla. */
+  border-radius: 14px; /* redondea las esquinas del elemento. */
+  overflow: hidden; /* controla que pasa si el contenido se sale del contenedor. */
+  box-shadow: 0 4px 0 var(--rojo-claro); /* agrega una sombra alrededor del elemento. */
 }
-.alimentos-tabla thead { background: var(--rojo); color: white; }
-.alimentos-tabla th { padding: 11px 14px; text-align: left; font-size: 0.92rem; }
-.alimentos-tabla td { padding: 9px 14px; font-size: 0.9rem; border-bottom: 1px solid var(--rojo-claro); }
-.alimentos-tabla tbody tr:nth-child(even) { background: #fff9f6; }
-.alimentos-tabla tbody tr:hover { background: var(--rojo-claro); }
-.badge { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 0.76rem; font-weight: 700; }
-.badge-alto { background: var(--rojo-claro); color: var(--rojo-oscuro); }
-.badge-medio { background: var(--amarillo-claro); color: #633806; }
+.alimentos-tabla thead { background: var(--rojo); /* define el fondo del elemento. */ color: white; /* define el color del texto. */ }
+.alimentos-tabla th { padding: 11px 14px; /* define el espacio interno del elemento. */ text-align: left; /* alinea el texto. */ font-size: 0.92rem; /* define el tamaño del texto. */ }
+.alimentos-tabla td { padding: 9px 14px; /* define el espacio interno del elemento. */ font-size: 0.9rem; /* define el tamaño del texto. */ border-bottom: 1px solid var(--rojo-claro); /* define el borde inferior. */ }
+.alimentos-tabla tbody tr:nth-child(even) { background: #fff9f6; /* define el fondo del elemento. */ }
+.alimentos-tabla tbody tr:hover { background: var(--rojo-claro); /* define el fondo del elemento. */ }
+.badge { display: inline-block; /* define como se comporta el elemento en el layout. */ padding: 2px 9px; /* define el espacio interno del elemento. */ border-radius: 20px; /* redondea las esquinas del elemento. */ font-size: 0.76rem; /* define el tamaño del texto. */ font-weight: 700; /* define el grosor de la letra. */ }
+.badge-alto { background: var(--rojo-claro); /* define el fondo del elemento. */ color: var(--rojo-oscuro); /* define el color del texto. */ }
+.badge-medio { background: var(--amarillo-claro); /* define el fondo del elemento. */ color: #633806; /* define el color del texto. */ }
 
 /* ===== MARQUEE ===== */
+/* marquee crea una fila de tarjetas que se mueve horizontalmente. */
 @keyframes marquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0%   { transform: translateX(0); /* mueve, rota o escala visualmente el elemento. */ }
+  100% { transform: translateX(-50%); /* mueve, rota o escala visualmente el elemento. */ }
 }
 .marquee-outer {
-  overflow: hidden;
-  width: 100%;
-  margin-bottom: 1.8rem;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  overflow: hidden; /* controla que pasa si el contenido se sale del contenedor. */
+  width: 100%; /* define el ancho del elemento. */
+  margin-bottom: 1.8rem; /* define el espacio exterior inferior. */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); /* version para navegadores WebKit de la mascara visual. */
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); /* crea una mascara para desvanecer partes del elemento. */
 }
 .marquee-track {
-  display: flex;
-  gap: 1rem;
-  width: max-content;
-  animation: marquee 30s linear infinite;
+  display: flex; /* define como se comporta el elemento en el layout. */
+  gap: 1rem; /* define el espacio entre elementos de grid o flex. */
+  width: max-content; /* define el ancho del elemento. */
+  animation: marquee 30s linear infinite; /* aplica una animacion al elemento. */
 }
-.marquee-track:hover { animation-play-state: paused; }
+.marquee-track:hover { animation-play-state: paused; /* permite pausar o continuar una animacion. */ }
 .curio-card {
-  background: var(--azul-claro);
-  border: 2px solid #85B7EB;
-  border-radius: 18px;
-  padding: 1.3rem 1.6rem;
-  width: 260px;
-  flex-shrink: 0;
-  text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
+  background: var(--azul-claro); /* define el fondo del elemento. */
+  border: 2px solid #85B7EB; /* define grosor, tipo y color del borde. */
+  border-radius: 18px; /* redondea las esquinas del elemento. */
+  padding: 1.3rem 1.6rem; /* define el espacio interno del elemento. */
+  width: 260px; /* define el ancho del elemento. */
+  flex-shrink: 0; /* evita o permite que un elemento se reduzca. */
+  text-align: center; /* alinea el texto. */
+  transition: transform 0.2s, box-shadow 0.2s; /* suaviza cambios visuales como color, sombra o movimiento. */
 }
-.curio-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(24,95,165,0.15); }
-.curio-card .curio-emoji { font-size: 2.3rem; margin-bottom: 0.4rem; }
+.curio-card:hover { transform: translateY(-5px); /* mueve, rota o escala visualmente el elemento. */ box-shadow: 0 8px 20px rgba(24,95,165,0.15); /* agrega una sombra alrededor del elemento. */ }
+.curio-card .curio-emoji { font-size: 2.3rem; /* define el tamaño del texto. */ margin-bottom: 0.4rem; /* define el espacio exterior inferior. */ }
 .curio-card strong {
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.05rem;
-  color: var(--azul);
-  display: block;
-  margin-bottom: 0.4rem;
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  font-size: 1.05rem; /* define el tamaño del texto. */
+  color: var(--azul); /* define el color del texto. */
+  display: block; /* define como se comporta el elemento en el layout. */
+  margin-bottom: 0.4rem; /* define el espacio exterior inferior. */
 }
-.curio-card p { font-size: 0.84rem; color: var(--gris); line-height: 1.6; }
+.curio-card p { font-size: 0.84rem; /* define el tamaño del texto. */ color: var(--gris); /* define el color del texto. */ line-height: 1.6; /* define la altura de cada linea de texto. */ }
 
 /* ===== LINKS ===== */
-.links-section { margin-top: 1rem; }
+/* Tarjetas de enlaces externos a fuentes recomendadas. */
+.links-section { margin-top: 1rem; /* define el espacio exterior superior. */ }
 .links-titulo {
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.4rem;
-  color: var(--rojo);
-  margin-bottom: 0.4rem;
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  font-size: 1.4rem; /* define el tamaño del texto. */
+  color: var(--rojo); /* define el color del texto. */
+  margin-bottom: 0.4rem; /* define el espacio exterior inferior. */
 }
 .links-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 0.9rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); /* define las columnas de una grilla. */
+  gap: 0.9rem; /* define el espacio entre elementos de grid o flex. */
 }
 .link-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 11px;
-  background: white;
-  border: 2px solid var(--azul-claro);
-  border-radius: 14px;
-  padding: 0.9rem 1.1rem;
-  text-decoration: none;
-  color: var(--texto);
-  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  display: flex; /* define como se comporta el elemento en el layout. */
+  align-items: flex-start; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
+  gap: 11px; /* define el espacio entre elementos de grid o flex. */
+  background: white; /* define el fondo del elemento. */
+  border: 2px solid var(--azul-claro); /* define grosor, tipo y color del borde. */
+  border-radius: 14px; /* redondea las esquinas del elemento. */
+  padding: 0.9rem 1.1rem; /* define el espacio interno del elemento. */
+  text-decoration: none; /* agrega o quita decoracion del texto, como subrayado. */
+  color: var(--texto); /* define el color del texto. */
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; /* suaviza cambios visuales como color, sombra o movimiento. */
 }
 .link-card:hover {
-  border-color: var(--azul);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(24,95,165,0.12);
+  border-color: var(--azul); /* define el color del borde. */
+  transform: translateY(-3px); /* mueve, rota o escala visualmente el elemento. */
+  box-shadow: 0 6px 16px rgba(24,95,165,0.12); /* agrega una sombra alrededor del elemento. */
 }
-.link-icono { font-size: 1.7rem; flex-shrink: 0; }
-.link-card strong { font-size: 0.9rem; color: var(--azul); display: block; margin-bottom: 3px; }
-.link-card p { font-size: 0.8rem; color: var(--gris); line-height: 1.4; }
+.link-icono { font-size: 1.7rem; /* define el tamaño del texto. */ flex-shrink: 0; /* evita o permite que un elemento se reduzca. */ }
+.link-card strong { font-size: 0.9rem; /* define el tamaño del texto. */ color: var(--azul); /* define el color del texto. */ display: block; /* define como se comporta el elemento en el layout. */ margin-bottom: 3px; /* define el espacio exterior inferior. */ }
+.link-card p { font-size: 0.8rem; /* define el tamaño del texto. */ color: var(--gris); /* define el color del texto. */ line-height: 1.4; /* define la altura de cada linea de texto. */ }
 
 /* ===== FOOTER ===== */
+/* Pie de pagina con autores, ubicacion y fuentes sugeridas. */
 footer {
-  background: var(--texto);
-  color: rgba(255,255,255,0.75);
-  text-align: center;
-  padding: 1.8rem 1rem;
-  font-size: 0.88rem;
+  background: var(--texto); /* define el fondo del elemento. */
+  color: rgba(255,255,255,0.75); /* define el color del texto. */
+  text-align: center; /* alinea el texto. */
+  padding: 1.8rem 1rem; /* define el espacio interno del elemento. */
+  font-size: 0.88rem; /* define el tamaño del texto. */
 }
-footer strong { color: white; display: block; font-size: 0.98rem; margin-bottom: 0.3rem; }
-footer p { margin-top: 0.4rem; font-size: 0.8rem; opacity: 0.6; }
+footer strong { color: white; /* define el color del texto. */ display: block; /* define como se comporta el elemento en el layout. */ font-size: 0.98rem; /* define el tamaño del texto. */ margin-bottom: 0.3rem; /* define el espacio exterior inferior. */ }
+footer p { margin-top: 0.4rem; /* define el espacio exterior superior. */ font-size: 0.8rem; /* define el tamaño del texto. */ opacity: 0.6; /* define la transparencia del elemento. */ }
 
 /* ===== LAYOUT MULTIPAGINA ===== */
+/* Estilos compartidos por todas las paginas internas del sitio. */
 .site-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  z-index: 1000;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  box-shadow: 0 8px 20px rgba(44,44,42,0.16);
+  position: fixed; /* define como se posiciona el elemento. */
+  top: 0; /* ubica el elemento desde arriba. */
+  left: 0; /* ubica el elemento desde la izquierda. */
+  right: 0; /* ubica el elemento desde la derecha. */
+  width: 100%; /* define el ancho del elemento. */
+  z-index: 1000; /* define que elemento queda encima de otro. */
+  justify-content: space-between; /* alinea los elementos en el eje horizontal o principal. */
+  align-items: center; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
+  gap: 1rem; /* define el espacio entre elementos de grid o flex. */
+  box-shadow: 0 8px 20px rgba(44,44,42,0.16); /* agrega una sombra alrededor del elemento. */
 }
 .brand {
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.1rem;
-  letter-spacing: 0.5px;
-  padding-left: 0;
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  font-size: 1.1rem; /* define el tamaño del texto. */
+  letter-spacing: 0.5px; /* define el espacio entre letras. */
+  padding-left: 0; /* define el espacio interno izquierdo. */
 }
 .nav-links {
-  display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 0.25rem;
+  display: flex; /* define como se comporta el elemento en el layout. */
+  justify-content: flex-end; /* alinea los elementos en el eje horizontal o principal. */
+  flex-wrap: wrap; /* permite que los elementos flex bajen a otra linea. */
+  gap: 0.25rem; /* define el espacio entre elementos de grid o flex. */
 }
 .site-nav a.active {
-  background: rgba(255,255,255,0.18);
-  color: #fff;
+  background: rgba(255,255,255,0.18); /* define el fondo del elemento. */
+  color: #fff; /* define el color del texto. */
 }
 .page-header {
-  min-height: 340px;
-  padding: 5rem var(--px) 4rem;
-  background-position: center;
-  background-attachment: scroll;
+  min-height: 340px; /* define una altura minima. */
+  padding: 5rem var(--px) 4rem; /* define el espacio interno del elemento. */
+  background-position: center; /* ubica la imagen de fondo dentro del elemento. */
+  background-attachment: scroll; /* controla si el fondo se mueve o queda fijo al hacer scroll. */
 }
 .home-header {
-  min-height: calc(100vh - 58px);
+  min-height: calc(100vh - 58px); /* define una altura minima. */
 }
 .header-content {
-  display: block;
+  display: block; /* define como se comporta el elemento en el layout. */
 }
 main {
-  background: #fff9f6;
+  background: #fff9f6; /* define el fondo del elemento. */
 }
 .section-soft {
-  background: #fff;
+  background: #fff; /* define el fondo del elemento. */
 }
 .feature-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.2rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* define las columnas de una grilla. */
+  gap: 1.2rem; /* define el espacio entre elementos de grid o flex. */
 }
 .feature-card,
 .news-card,
 .recipe-card {
-  background: white;
-  border: 2px solid var(--rojo-claro);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(44,44,42,0.06);
+  background: white; /* define el fondo del elemento. */
+  border: 2px solid var(--rojo-claro); /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  overflow: hidden; /* controla que pasa si el contenido se sale del contenedor. */
+  box-shadow: 0 8px 20px rgba(44,44,42,0.06); /* agrega una sombra alrededor del elemento. */
 }
 .feature-card img,
 .news-card img,
 .recipe-card > img {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-  display: block;
-  background: var(--amarillo-claro);
+  width: 100%; /* define el ancho del elemento. */
+  height: 240px; /* define la altura del elemento. */
+  object-fit: cover; /* controla como una imagen o video llena su contenedor. */
+  display: block; /* define como se comporta el elemento en el layout. */
+  background: var(--amarillo-claro); /* define el fondo del elemento. */
 }
 .feature-card > div,
 .news-card > div,
 .recipe-content {
-  padding: 1.2rem;
+  padding: 1.2rem; /* define el espacio interno del elemento. */
 }
 .card-kicker {
-  color: var(--rojo);
-  font-size: 0.78rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 0.35rem;
+  color: var(--rojo); /* define el color del texto. */
+  font-size: 0.78rem; /* define el tamaño del texto. */
+  font-weight: 800; /* define el grosor de la letra. */
+  text-transform: uppercase; /* cambia mayusculas o minusculas del texto. */
+  letter-spacing: 1px; /* define el espacio entre letras. */
+  margin-bottom: 0.35rem; /* define el espacio exterior inferior. */
 }
 .feature-card h2,
 .news-card h2,
 .recipe-card h2 {
-  font-family: 'Fredoka One', cursive;
-  color: var(--texto);
-  font-size: 1.35rem;
-  margin-bottom: 0.5rem;
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  color: var(--texto); /* define el color del texto. */
+  font-size: 1.35rem; /* define el tamaño del texto. */
+  margin-bottom: 0.5rem; /* define el espacio exterior inferior. */
 }
 .feature-card p,
 .news-card p,
 .recipe-card p,
 .nota {
-  color: var(--gris);
-  line-height: 1.7;
-  font-size: 0.94rem;
+  color: var(--gris); /* define el color del texto. */
+  line-height: 1.7; /* define la altura de cada linea de texto. */
+  font-size: 0.94rem; /* define el tamaño del texto. */
 }
 .btn-link {
-  display: inline-block;
-  margin-top: 0.9rem;
-  color: var(--rojo-oscuro);
-  font-weight: 800;
-  text-decoration: none;
+  display: inline-block; /* define como se comporta el elemento en el layout. */
+  margin-top: 0.9rem; /* define el espacio exterior superior. */
+  color: var(--rojo-oscuro); /* define el color del texto. */
+  font-weight: 800; /* define el grosor de la letra. */
+  text-decoration: none; /* agrega o quita decoracion del texto, como subrayado. */
 }
 .btn-link:hover {
-  color: var(--rojo);
+  color: var(--rojo); /* define el color del texto. */
 }
 .action-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  border-radius: 8px;
-  background: var(--rojo);
-  color: white;
-  padding: 0.78rem 1rem;
-  font-weight: 800;
-  text-decoration: none;
-  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  display: inline-flex; /* define como se comporta el elemento en el layout. */
+  align-items: center; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
+  justify-content: center; /* alinea los elementos en el eje horizontal o principal. */
+  min-height: 44px; /* define una altura minima. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  background: var(--rojo); /* define el fondo del elemento. */
+  color: white; /* define el color del texto. */
+  padding: 0.78rem 1rem; /* define el espacio interno del elemento. */
+  font-weight: 800; /* define el grosor de la letra. */
+  text-decoration: none; /* agrega o quita decoracion del texto, como subrayado. */
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease; /* suaviza cambios visuales como color, sombra o movimiento. */
 }
 .action-link:hover {
-  background: var(--rojo-oscuro);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(216,90,48,0.2);
+  background: var(--rojo-oscuro); /* define el fondo del elemento. */
+  color: white; /* define el color del texto. */
+  transform: translateY(-2px); /* mueve, rota o escala visualmente el elemento. */
+  box-shadow: 0 8px 18px rgba(216,90,48,0.2); /* agrega una sombra alrededor del elemento. */
 }
 .action-link.secondary {
-  background: white;
-  color: var(--rojo-oscuro);
-  border: 2px solid var(--rojo-medio);
+  background: white; /* define el fondo del elemento. */
+  color: var(--rojo-oscuro); /* define el color del texto. */
+  border: 2px solid var(--rojo-medio); /* define grosor, tipo y color del borde. */
 }
 .action-link.secondary:hover {
-  background: var(--rojo-claro);
-  color: var(--rojo-oscuro);
-  box-shadow: none;
+  background: var(--rojo-claro); /* define el fondo del elemento. */
+  color: var(--rojo-oscuro); /* define el color del texto. */
+  box-shadow: none; /* agrega una sombra alrededor del elemento. */
 }
 .home-test-panel {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 1rem;
-  align-items: center;
-  background: white;
-  border: 2px solid var(--verde-claro);
-  border-left: 6px solid var(--verde);
-  border-radius: 8px;
-  padding: 1.25rem;
-  box-shadow: 0 10px 24px rgba(44,44,42,0.06);
-  margin-top: 1.2rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: minmax(0, 1fr) auto; /* define las columnas de una grilla. */
+  gap: 1rem; /* define el espacio entre elementos de grid o flex. */
+  align-items: center; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
+  background: white; /* define el fondo del elemento. */
+  border: 2px solid var(--verde-claro); /* define grosor, tipo y color del borde. */
+  border-left: 6px solid var(--verde); /* define el borde izquierdo. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  padding: 1.25rem; /* define el espacio interno del elemento. */
+  box-shadow: 0 10px 24px rgba(44,44,42,0.06); /* agrega una sombra alrededor del elemento. */
+  margin-top: 1.2rem; /* define el espacio exterior superior. */
 }
 .home-test-panel h2 {
-  font-family: 'Fredoka One', cursive;
-  font-size: clamp(1.25rem, 3vw, 1.8rem);
-  color: var(--texto);
-  margin-bottom: 0.4rem;
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  font-size: clamp(1.25rem, 3vw, 1.8rem); /* define el tamaño del texto. */
+  color: var(--texto); /* define el color del texto. */
+  margin-bottom: 0.4rem; /* define el espacio exterior inferior. */
 }
 .home-test-panel p {
-  color: var(--gris);
-  line-height: 1.65;
-  font-size: 0.95rem;
+  color: var(--gris); /* define el color del texto. */
+  line-height: 1.65; /* define la altura de cada linea de texto. */
+  font-size: 0.95rem; /* define el tamaño del texto. */
 }
 .page-grid,
 .stats-grid,
 .news-grid,
 .recipe-grid {
-  display: grid;
-  gap: 1rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  gap: 1rem; /* define el espacio entre elementos de grid o flex. */
 }
 .page-grid {
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); /* define las columnas de una grilla. */
 }
 .page-card,
 .stat-card {
-  background: white;
-  border: 2px solid var(--gris-claro);
-  border-radius: 8px;
-  padding: 1.1rem;
-  color: var(--texto);
-  text-decoration: none;
-  transition: border-color 0.2s, transform 0.2s;
+  background: white; /* define el fondo del elemento. */
+  border: 2px solid var(--gris-claro); /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  padding: 1.1rem; /* define el espacio interno del elemento. */
+  color: var(--texto); /* define el color del texto. */
+  text-decoration: none; /* agrega o quita decoracion del texto, como subrayado. */
+  transition: border-color 0.2s, transform 0.2s; /* suaviza cambios visuales como color, sombra o movimiento. */
 }
 .page-card:hover,
 .stat-card:hover {
-  border-color: var(--rojo-medio);
-  transform: translateY(-3px);
+  border-color: var(--rojo-medio); /* define el color del borde. */
+  transform: translateY(-3px); /* mueve, rota o escala visualmente el elemento. */
 }
 .page-card span,
 .stat-card strong {
-  display: block;
-  color: var(--rojo);
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.1rem;
-  margin-bottom: 0.35rem;
+  display: block; /* define como se comporta el elemento en el layout. */
+  color: var(--rojo); /* define el color del texto. */
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  font-size: 1.1rem; /* define el tamaño del texto. */
+  margin-bottom: 0.35rem; /* define el espacio exterior inferior. */
 }
 .page-card p,
 .stat-card p {
-  color: var(--gris);
-  font-size: 0.88rem;
-  line-height: 1.55;
+  color: var(--gris); /* define el color del texto. */
+  font-size: 0.88rem; /* define el tamaño del texto. */
+  line-height: 1.55; /* define la altura de cada linea de texto. */
 }
 .stats-grid {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  margin-bottom: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* define las columnas de una grilla. */
+  margin-bottom: 1.5rem; /* define el espacio exterior inferior. */
 }
 .news-grid,
 .recipe-grid {
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr; /* define las columnas de una grilla. */
 }
 .news-card {
-  display: grid;
-  grid-template-columns: minmax(220px, 360px) 1fr;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: minmax(220px, 360px) 1fr; /* define las columnas de una grilla. */
 }
 .news-card img {
-  height: 100%;
-  min-height: 230px;
+  height: 100%; /* define la altura del elemento. */
+  min-height: 230px; /* define una altura minima. */
 }
 .date-label {
-  display: inline-block;
-  margin-top: 0.8rem;
-  padding: 4px 10px;
-  border-radius: 20px;
-  background: var(--azul-claro);
-  color: var(--azul);
-  font-size: 0.78rem;
-  font-weight: 800;
+  display: inline-block; /* define como se comporta el elemento en el layout. */
+  margin-top: 0.8rem; /* define el espacio exterior superior. */
+  padding: 4px 10px; /* define el espacio interno del elemento. */
+  border-radius: 20px; /* redondea las esquinas del elemento. */
+  background: var(--azul-claro); /* define el fondo del elemento. */
+  color: var(--azul); /* define el color del texto. */
+  font-size: 0.78rem; /* define el tamaño del texto. */
+  font-weight: 800; /* define el grosor de la letra. */
 }
 .recipe-card {
-  display: grid;
-  grid-template-columns: minmax(260px, 34%) minmax(0, 1fr);
-  align-items: center;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: minmax(260px, 34%) minmax(0, 1fr); /* define las columnas de una grilla. */
+  align-items: center; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
 }
 .recipe-card > img {
-  height: auto;
-  min-height: 0;
-  max-height: 640px;
-  justify-self: center;
-  object-fit: contain;
-  object-position: top center;
-  padding: 0.65rem;
-  background: #fffaf6;
-  border-right: 1px solid var(--rojo-claro);
+  height: auto; /* define la altura del elemento. */
+  min-height: 0; /* define una altura minima. */
+  max-height: 640px; /* limita la altura maxima. */
+  justify-self: center; /* define la propiedad CSS justify-self. */
+  object-fit: contain; /* controla como una imagen o video llena su contenedor. */
+  object-position: top center; /* ubica una imagen dentro de su contenedor. */
+  padding: 0.65rem; /* define el espacio interno del elemento. */
+  background: #fffaf6; /* define el fondo del elemento. */
+  border-right: 1px solid var(--rojo-claro); /* define el borde derecho. */
 }
 .recipe-content h3 {
-  color: var(--rojo-oscuro);
-  font-size: 1rem;
-  margin: 0.9rem 0 0.4rem;
+  color: var(--rojo-oscuro); /* define el color del texto. */
+  font-size: 1rem; /* define el tamaño del texto. */
+  margin: 0.9rem 0 0.4rem; /* define el espacio exterior del elemento. */
 }
 .recipe-columns {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* define las columnas de una grilla. */
+  gap: 1rem; /* define el espacio entre elementos de grid o flex. */
 }
 .recipe-content ul,
 .recipe-content ol {
-  padding-left: 1.2rem;
-  color: var(--gris);
-  line-height: 1.65;
-  font-size: 0.9rem;
+  padding-left: 1.2rem; /* define el espacio interno izquierdo. */
+  color: var(--gris); /* define el color del texto. */
+  line-height: 1.65; /* define la altura de cada linea de texto. */
+  font-size: 0.9rem; /* define el tamaño del texto. */
 }
 .recipe-video {
-  max-width: 520px;
-  box-shadow: none;
+  max-width: 520px; /* limita el ancho maximo. */
+  box-shadow: none; /* agrega una sombra alrededor del elemento. */
 }
 .video-placeholder {
-  display: grid;
-  place-items: center;
-  min-height: 180px;
-  border: 2px dashed #85B7EB;
-  border-radius: 8px;
-  background: var(--azul-claro);
-  color: var(--azul);
-  font-weight: 800;
-  text-align: center;
-  padding: 1rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  place-items: center; /* centra elementos en grid en ambos ejes. */
+  min-height: 180px; /* define una altura minima. */
+  border: 2px dashed #85B7EB; /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  background: var(--azul-claro); /* define el fondo del elemento. */
+  color: var(--azul); /* define el color del texto. */
+  font-weight: 800; /* define el grosor de la letra. */
+  text-align: center; /* alinea el texto. */
+  padding: 1rem; /* define el espacio interno del elemento. */
 }
 .recipe-reference {
-  width: 100%;
-  max-width: 560px;
-  aspect-ratio: 4 / 3;
-  margin: 0.45rem auto 0;
-  overflow: hidden;
-  border-radius: 8px;
-  border: 2px solid var(--rojo-claro);
-  background: var(--amarillo-claro);
-  box-shadow: 0 8px 18px rgba(44,44,42,0.07);
+  width: 100%; /* define el ancho del elemento. */
+  max-width: 560px; /* limita el ancho maximo. */
+  aspect-ratio: 4 / 3; /* mantiene una proporcion fija entre ancho y alto. */
+  margin: 0.45rem auto 0; /* define el espacio exterior del elemento. */
+  overflow: hidden; /* controla que pasa si el contenido se sale del contenedor. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  border: 2px solid var(--rojo-claro); /* define grosor, tipo y color del borde. */
+  background: var(--amarillo-claro); /* define el fondo del elemento. */
+  box-shadow: 0 8px 18px rgba(44,44,42,0.07); /* agrega una sombra alrededor del elemento. */
 }
 .recipe-reference img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  object-position: center;
+  width: 100%; /* define el ancho del elemento. */
+  height: 100%; /* define la altura del elemento. */
+  display: block; /* define como se comporta el elemento en el layout. */
+  object-fit: cover; /* controla como una imagen o video llena su contenedor. */
+  object-position: center; /* ubica una imagen dentro de su contenedor. */
 }
 .table-wrap {
-  overflow-x: auto;
+  overflow-x: auto; /* controla el desborde horizontal. */
 }
 .video-container video {
-  width: 100%;
-  height: 100%;
-  display: block;
+  width: 100%; /* define el ancho del elemento. */
+  height: 100%; /* define la altura del elemento. */
+  display: block; /* define como se comporta el elemento en el layout. */
 }
 .image-missing {
-  object-fit: contain !important;
-  padding: 1rem;
-  border: 2px dashed var(--rojo-medio);
+  object-fit: contain !important; /* controla como una imagen o video llena su contenedor. */
+  padding: 1rem; /* define el espacio interno del elemento. */
+  border: 2px dashed var(--rojo-medio); /* define grosor, tipo y color del borde. */
 }
 
 /* ===== BLOQUES INFORMATIVOS Y ANIMACIONES ===== */
+/* Bloques reutilizables: paneles, tarjetas, llamadas de atencion, lineas de tiempo y animaciones. */
 .eyebrow {
-  color: var(--rojo);
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 0.35rem;
+  color: var(--rojo); /* define el color del texto. */
+  font-size: 0.78rem; /* define el tamaño del texto. */
+  font-weight: 800; /* define el grosor de la letra. */
+  letter-spacing: 1px; /* define el espacio entre letras. */
+  text-transform: uppercase; /* cambia mayusculas o minusculas del texto. */
+  margin-bottom: 0.35rem; /* define el espacio exterior inferior. */
 }
 .info-panel,
 .split-visual,
 .news-intro {
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
-  gap: 1.2rem;
-  align-items: stretch;
-  margin-bottom: 1.4rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr); /* define las columnas de una grilla. */
+  gap: 1.2rem; /* define el espacio entre elementos de grid o flex. */
+  align-items: stretch; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
+  margin-bottom: 1.4rem; /* define el espacio exterior inferior. */
 }
 .info-panel > div:first-child,
 .split-visual > div:first-child,
 .news-intro > div:first-child,
 .data-story {
-  background: white;
-  border: 2px solid var(--rojo-claro);
-  border-radius: 8px;
-  padding: 1.35rem;
-  box-shadow: 0 10px 24px rgba(44,44,42,0.06);
+  background: white; /* define el fondo del elemento. */
+  border: 2px solid var(--rojo-claro); /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  padding: 1.35rem; /* define el espacio interno del elemento. */
+  box-shadow: 0 10px 24px rgba(44,44,42,0.06); /* agrega una sombra alrededor del elemento. */
 }
 .info-panel h2,
 .split-visual h2,
 .news-intro h2,
 .data-story h2 {
-  font-family: 'Fredoka One', cursive;
-  font-size: clamp(1.35rem, 3vw, 1.9rem);
-  color: var(--texto);
-  margin-bottom: 0.6rem;
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  font-size: clamp(1.35rem, 3vw, 1.9rem); /* define el tamaño del texto. */
+  color: var(--texto); /* define el color del texto. */
+  margin-bottom: 0.6rem; /* define el espacio exterior inferior. */
 }
 .info-panel p,
 .split-visual p,
 .news-intro p,
 .data-story p {
-  color: var(--gris);
-  line-height: 1.75;
-  font-size: 0.98rem;
+  color: var(--gris); /* define el color del texto. */
+  line-height: 1.75; /* define la altura de cada linea de texto. */
+  font-size: 0.98rem; /* define el tamaño del texto. */
 }
 .media-note {
-  min-height: 190px;
-  border: 2px dashed var(--amarillo);
-  border-radius: 8px;
+  min-height: 190px; /* define una altura minima. */
+  border: 2px dashed var(--amarillo); /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
   background:
     linear-gradient(135deg, rgba(239,159,39,0.15), rgba(29,158,117,0.12)),
-    #fff;
-  padding: 1.2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: var(--texto);
+    #fff; /* define el fondo del elemento con gradiente y color base. */
+  padding: 1.2rem; /* define el espacio interno del elemento. */
+  display: flex; /* define como se comporta el elemento en el layout. */
+  flex-direction: column; /* define la direccion de los elementos flex. */
+  justify-content: center; /* alinea los elementos en el eje horizontal o principal. */
+  color: var(--texto); /* define el color del texto. */
 }
 .media-note.tall {
-  min-height: 250px;
+  min-height: 250px; /* define una altura minima. */
 }
 .media-note span {
-  color: var(--rojo);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  color: var(--rojo); /* define el color del texto. */
+  font-size: 0.75rem; /* define el tamaño del texto. */
+  font-weight: 800; /* define el grosor de la letra. */
+  letter-spacing: 1px; /* define el espacio entre letras. */
+  text-transform: uppercase; /* cambia mayusculas o minusculas del texto. */
 }
 .media-note strong {
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.15rem;
-  color: var(--azul);
-  margin: 0.35rem 0;
-  word-break: break-word;
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  font-size: 1.15rem; /* define el tamaño del texto. */
+  color: var(--azul); /* define el color del texto. */
+  margin: 0.35rem 0; /* define el espacio exterior del elemento. */
+  word-break: break-word; /* permite partir palabras largas para que no se salgan. */
 }
 .media-note p {
-  color: var(--gris);
-  font-size: 0.88rem;
-  line-height: 1.55;
+  color: var(--gris); /* define el color del texto. */
+  font-size: 0.88rem; /* define el tamaño del texto. */
+  line-height: 1.55; /* define la altura de cada linea de texto. */
 }
 .image-slot,
 .imagen-slot {
-  width: 100%;
-  height: clamp(220px, 28vw, 320px);
-  min-height: 0;
-  aspect-ratio: 4 / 3;
-  display: block;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 8px;
-  border: 0;
-  box-shadow: none;
-  background: transparent;
-  overflow: hidden;
+  width: 100%; /* define el ancho del elemento. */
+  height: clamp(220px, 28vw, 320px); /* define la altura del elemento. */
+  min-height: 0; /* define una altura minima. */
+  aspect-ratio: 4 / 3; /* mantiene una proporcion fija entre ancho y alto. */
+  display: block; /* define como se comporta el elemento en el layout. */
+  object-fit: cover; /* controla como una imagen o video llena su contenedor. */
+  object-position: center; /* ubica una imagen dentro de su contenedor. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  border: 0; /* define grosor, tipo y color del borde. */
+  box-shadow: none; /* agrega una sombra alrededor del elemento. */
+  background: transparent; /* define el fondo del elemento. */
+  overflow: hidden; /* controla que pasa si el contenido se sale del contenedor. */
 }
 .image-slot-contain {
-  object-fit: contain;
-  transform: scale(1.08);
+  object-fit: contain; /* controla como una imagen o video llena su contenedor. */
+  transform: scale(1.08); /* mueve, rota o escala visualmente el elemento. */
 }
 .image-slot::before,
 .imagen-slot::before {
-  content: none;
+  content: none; /* crea contenido para pseudo-elementos como before o after. */
 }
 .image-slot::after,
 .imagen-slot::after {
-  content: none;
+  content: none; /* crea contenido para pseudo-elementos como before o after. */
 }
 .image-slot.tall,
 .imagen-slot.tall {
-  height: clamp(280px, 34vw, 400px);
+  height: clamp(280px, 34vw, 400px); /* define la altura del elemento. */
 }
 .image-slot-tipos,
 .image-slot-causas,
@@ -1009,576 +1030,578 @@ main {
 .imagen-slot-prevencion,
 .imagen-slot-datos,
 .imagen-slot-noticias {
-  background-color: transparent;
+  background-color: transparent; /* define solamente el color de fondo. */
 }
 .panel-img {
-  width: 100%;
-  height: 100%;
-  min-height: 230px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 2px solid var(--verde-claro);
-  display: block;
+  width: 100%; /* define el ancho del elemento. */
+  height: 100%; /* define la altura del elemento. */
+  min-height: 230px; /* define una altura minima. */
+  object-fit: cover; /* controla como una imagen o video llena su contenedor. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  border: 2px solid var(--verde-claro); /* define grosor, tipo y color del borde. */
+  display: block; /* define como se comporta el elemento en el layout. */
 }
 .mini-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-  margin-bottom: 1.2rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* define las columnas de una grilla. */
+  gap: 1rem; /* define el espacio entre elementos de grid o flex. */
+  margin-bottom: 1.2rem; /* define el espacio exterior inferior. */
 }
 .mini-card {
-  background: white;
-  border: 2px solid var(--verde-claro);
-  border-radius: 8px;
-  padding: 1.1rem;
+  background: white; /* define el fondo del elemento. */
+  border: 2px solid var(--verde-claro); /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  padding: 1.1rem; /* define el espacio interno del elemento. */
 }
 .mini-card span {
-  display: inline-block;
-  color: #085041;
-  background: var(--verde-claro);
-  border-radius: 20px;
-  padding: 3px 10px;
-  font-size: 0.74rem;
-  font-weight: 800;
-  margin-bottom: 0.6rem;
+  display: inline-block; /* define como se comporta el elemento en el layout. */
+  color: #085041; /* define el color del texto. */
+  background: var(--verde-claro); /* define el fondo del elemento. */
+  border-radius: 20px; /* redondea las esquinas del elemento. */
+  padding: 3px 10px; /* define el espacio interno del elemento. */
+  font-size: 0.74rem; /* define el tamaño del texto. */
+  font-weight: 800; /* define el grosor de la letra. */
+  margin-bottom: 0.6rem; /* define el espacio exterior inferior. */
 }
 .mini-card h3 {
-  color: var(--texto);
-  font-size: 1rem;
-  margin-bottom: 0.35rem;
+  color: var(--texto); /* define el color del texto. */
+  font-size: 1rem; /* define el tamaño del texto. */
+  margin-bottom: 0.35rem; /* define el espacio exterior inferior. */
 }
 .mini-card p,
 .micro-list,
 .news-extra {
-  color: var(--gris);
-  font-size: 0.88rem;
-  line-height: 1.6;
+  color: var(--gris); /* define el color del texto. */
+  font-size: 0.88rem; /* define el tamaño del texto. */
+  line-height: 1.6; /* define la altura de cada linea de texto. */
 }
 .news-extra {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 38px;
-  width: fit-content;
-  margin-top: 0.8rem;
-  padding: 0.55rem 0.85rem;
-  border-radius: 8px;
-  background: var(--azul-claro);
-  color: var(--azul);
-  font-weight: 800;
-  text-decoration: none;
+  display: inline-flex; /* define como se comporta el elemento en el layout. */
+  align-items: center; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
+  justify-content: center; /* alinea los elementos en el eje horizontal o principal. */
+  min-height: 38px; /* define una altura minima. */
+  width: fit-content; /* define el ancho del elemento. */
+  margin-top: 0.8rem; /* define el espacio exterior superior. */
+  padding: 0.55rem 0.85rem; /* define el espacio interno del elemento. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  background: var(--azul-claro); /* define el fondo del elemento. */
+  color: var(--azul); /* define el color del texto. */
+  font-weight: 800; /* define el grosor de la letra. */
+  text-decoration: none; /* agrega o quita decoracion del texto, como subrayado. */
 }
 .news-extra:hover {
-  background: var(--azul);
-  color: white;
+  background: var(--azul); /* define el fondo del elemento. */
+  color: white; /* define el color del texto. */
 }
 .micro-list {
-  margin-top: 0.7rem;
-  padding-left: 1rem;
-  text-align: left;
+  margin-top: 0.7rem; /* define el espacio exterior superior. */
+  padding-left: 1rem; /* define el espacio interno izquierdo. */
+  text-align: left; /* alinea el texto. */
 }
 .micro-list li {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.25rem; /* define el espacio exterior inferior. */
 }
 .callout {
-  margin-top: 1.2rem;
-  background: var(--azul-claro);
-  border-left: 5px solid var(--azul);
-  border-radius: 0 8px 8px 0;
-  padding: 1rem 1.2rem;
-  color: var(--texto);
+  margin-top: 1.2rem; /* define el espacio exterior superior. */
+  background: var(--azul-claro); /* define el fondo del elemento. */
+  border-left: 5px solid var(--azul); /* define el borde izquierdo. */
+  border-radius: 0 8px 8px 0; /* redondea las esquinas del elemento. */
+  padding: 1rem 1.2rem; /* define el espacio interno del elemento. */
+  color: var(--texto); /* define el color del texto. */
 }
 .callout strong {
-  color: var(--azul);
-  display: block;
-  margin-bottom: 0.25rem;
+  color: var(--azul); /* define el color del texto. */
+  display: block; /* define como se comporta el elemento en el layout. */
+  margin-bottom: 0.25rem; /* define el espacio exterior inferior. */
 }
 .callout p {
-  color: var(--gris);
-  line-height: 1.65;
-  font-size: 0.94rem;
+  color: var(--gris); /* define el color del texto. */
+  line-height: 1.65; /* define la altura de cada linea de texto. */
+  font-size: 0.94rem; /* define el tamaño del texto. */
 }
 .timeline {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 1.3rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* define las columnas de una grilla. */
+  gap: 1rem; /* define el espacio entre elementos de grid o flex. */
+  margin-top: 1.3rem; /* define el espacio exterior superior. */
 }
 .timeline article {
-  background: white;
-  border: 2px solid var(--gris-claro);
-  border-radius: 8px;
-  padding: 1.1rem;
-  position: relative;
+  background: white; /* define el fondo del elemento. */
+  border: 2px solid var(--gris-claro); /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  padding: 1.1rem; /* define el espacio interno del elemento. */
+  position: relative; /* define como se posiciona el elemento. */
 }
 .timeline span {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--rojo);
-  color: white;
-  display: grid;
-  place-items: center;
-  font-family: 'Fredoka One', cursive;
-  margin-bottom: 0.65rem;
+  width: 34px; /* define el ancho del elemento. */
+  height: 34px; /* define la altura del elemento. */
+  border-radius: 50%; /* redondea las esquinas del elemento. */
+  background: var(--rojo); /* define el fondo del elemento. */
+  color: white; /* define el color del texto. */
+  display: grid; /* define como se comporta el elemento en el layout. */
+  place-items: center; /* centra elementos en grid en ambos ejes. */
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  margin-bottom: 0.65rem; /* define el espacio exterior inferior. */
 }
 .timeline h3 {
-  color: var(--texto);
-  font-size: 1rem;
-  margin-bottom: 0.35rem;
+  color: var(--texto); /* define el color del texto. */
+  font-size: 1rem; /* define el tamaño del texto. */
+  margin-bottom: 0.35rem; /* define el espacio exterior inferior. */
 }
 .timeline p {
-  color: var(--gris);
-  font-size: 0.88rem;
-  line-height: 1.55;
+  color: var(--gris); /* define el color del texto. */
+  font-size: 0.88rem; /* define el tamaño del texto. */
+  line-height: 1.55; /* define la altura de cada linea de texto. */
 }
 .habit-strip {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-  margin-top: 1.2rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* define las columnas de una grilla. */
+  gap: 1rem; /* define el espacio entre elementos de grid o flex. */
+  margin-top: 1.2rem; /* define el espacio exterior superior. */
 }
 .habit-strip div {
-  background: var(--amarillo-claro);
-  border: 2px solid var(--amarillo);
-  border-radius: 8px;
-  padding: 1rem;
+  background: var(--amarillo-claro); /* define el fondo del elemento. */
+  border: 2px solid var(--amarillo); /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  padding: 1rem; /* define el espacio interno del elemento. */
 }
 .habit-strip strong {
-  color: #633806;
-  display: block;
-  margin-bottom: 0.25rem;
+  color: #633806; /* define el color del texto. */
+  display: block; /* define como se comporta el elemento en el layout. */
+  margin-bottom: 0.25rem; /* define el espacio exterior inferior. */
 }
 .habit-strip p {
-  color: var(--gris);
-  line-height: 1.5;
-  font-size: 0.88rem;
+  color: var(--gris); /* define el color del texto. */
+  line-height: 1.5; /* define la altura de cada linea de texto. */
+  font-size: 0.88rem; /* define el tamaño del texto. */
 }
 .data-story {
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.4rem; /* define el espacio exterior inferior. */
 }
 .screening-alert {
-  background: #fff;
-  border: 2px solid var(--rojo-medio);
-  border-left: 6px solid var(--rojo);
-  border-radius: 0 8px 8px 0;
-  padding: 1rem 1.2rem;
-  margin-bottom: 1.3rem;
-  box-shadow: 0 10px 24px rgba(44,44,42,0.06);
+  background: #fff; /* define el fondo del elemento. */
+  border: 2px solid var(--rojo-medio); /* define grosor, tipo y color del borde. */
+  border-left: 6px solid var(--rojo); /* define el borde izquierdo. */
+  border-radius: 0 8px 8px 0; /* redondea las esquinas del elemento. */
+  padding: 1rem 1.2rem; /* define el espacio interno del elemento. */
+  margin-bottom: 1.3rem; /* define el espacio exterior inferior. */
+  box-shadow: 0 10px 24px rgba(44,44,42,0.06); /* agrega una sombra alrededor del elemento. */
 }
 .screening-alert strong {
-  color: var(--rojo-oscuro);
-  display: block;
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.1rem;
-  margin-bottom: 0.25rem;
+  color: var(--rojo-oscuro); /* define el color del texto. */
+  display: block; /* define como se comporta el elemento en el layout. */
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  font-size: 1.1rem; /* define el tamaño del texto. */
+  margin-bottom: 0.25rem; /* define el espacio exterior inferior. */
 }
 .screening-alert p {
-  color: var(--gris);
-  line-height: 1.65;
-  font-size: 0.95rem;
+  color: var(--gris); /* define el color del texto. */
+  line-height: 1.65; /* define la altura de cada linea de texto. */
+  font-size: 0.95rem; /* define el tamaño del texto. */
 }
 .screening-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-  margin-bottom: 1.3rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* define las columnas de una grilla. */
+  gap: 1rem; /* define el espacio entre elementos de grid o flex. */
+  margin-bottom: 1.3rem; /* define el espacio exterior inferior. */
 }
 .screening-card {
-  background: white;
-  border: 2px solid var(--gris-claro);
-  border-radius: 8px;
-  padding: 1.1rem;
+  background: white; /* define el fondo del elemento. */
+  border: 2px solid var(--gris-claro); /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  padding: 1.1rem; /* define el espacio interno del elemento. */
 }
 .screening-card span {
-  display: inline-block;
-  color: var(--azul);
-  background: var(--azul-claro);
-  border-radius: 20px;
-  padding: 3px 10px;
-  font-size: 0.74rem;
-  font-weight: 800;
-  margin-bottom: 0.65rem;
+  display: inline-block; /* define como se comporta el elemento en el layout. */
+  color: var(--azul); /* define el color del texto. */
+  background: var(--azul-claro); /* define el fondo del elemento. */
+  border-radius: 20px; /* redondea las esquinas del elemento. */
+  padding: 3px 10px; /* define el espacio interno del elemento. */
+  font-size: 0.74rem; /* define el tamaño del texto. */
+  font-weight: 800; /* define el grosor de la letra. */
+  margin-bottom: 0.65rem; /* define el espacio exterior inferior. */
 }
 .screening-card h3 {
-  color: var(--texto);
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
+  color: var(--texto); /* define el color del texto. */
+  font-size: 1rem; /* define el tamaño del texto. */
+  margin-bottom: 0.5rem; /* define el espacio exterior inferior. */
 }
 .screening-card ul {
-  color: var(--gris);
-  font-size: 0.88rem;
-  line-height: 1.6;
-  padding-left: 1.1rem;
+  color: var(--gris); /* define el color del texto. */
+  font-size: 0.88rem; /* define el tamaño del texto. */
+  line-height: 1.6; /* define la altura de cada linea de texto. */
+  padding-left: 1.1rem; /* define el espacio interno izquierdo. */
 }
 .screening-card li {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.25rem; /* define el espacio exterior inferior. */
 }
 .risk-panel {
-  display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(280px, 1.05fr);
-  gap: 1rem;
-  align-items: stretch;
-  margin-bottom: 1.3rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: minmax(0, 0.95fr) minmax(280px, 1.05fr); /* define las columnas de una grilla. */
+  gap: 1rem; /* define el espacio entre elementos de grid o flex. */
+  align-items: stretch; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
+  margin-bottom: 1.3rem; /* define el espacio exterior inferior. */
 }
 .risk-panel > div:first-child,
 .risk-levels {
-  background: white;
-  border: 2px solid var(--azul-claro);
-  border-radius: 8px;
-  padding: 1.2rem;
+  background: white; /* define el fondo del elemento. */
+  border: 2px solid var(--azul-claro); /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  padding: 1.2rem; /* define el espacio interno del elemento. */
 }
 .risk-panel h2 {
-  font-family: 'Fredoka One', cursive;
-  font-size: clamp(1.25rem, 3vw, 1.7rem);
-  margin-bottom: 0.5rem;
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  font-size: clamp(1.25rem, 3vw, 1.7rem); /* define el tamaño del texto. */
+  margin-bottom: 0.5rem; /* define el espacio exterior inferior. */
 }
 .risk-panel p {
-  color: var(--gris);
-  line-height: 1.65;
-  font-size: 0.94rem;
+  color: var(--gris); /* define el color del texto. */
+  line-height: 1.65; /* define la altura de cada linea de texto. */
+  font-size: 0.94rem; /* define el tamaño del texto. */
 }
 .risk-levels {
-  display: grid;
-  gap: 0.75rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  gap: 0.75rem; /* define el espacio entre elementos de grid o flex. */
 }
 .risk-levels article {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.25rem 0.65rem;
-  align-items: start;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: auto 1fr; /* define las columnas de una grilla. */
+  gap: 0.25rem 0.65rem; /* define el espacio entre elementos de grid o flex. */
+  align-items: start; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
 }
 .risk-levels strong {
-  color: var(--texto);
+  color: var(--texto); /* define el color del texto. */
 }
 .risk-levels p {
-  grid-column: 2;
-  font-size: 0.86rem;
+  grid-column: 2; /* indica que columnas ocupa un elemento dentro de una grilla. */
+  font-size: 0.86rem; /* define el tamaño del texto. */
 }
 .level {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  margin-top: 0.25rem;
+  width: 14px; /* define el ancho del elemento. */
+  height: 14px; /* define la altura del elemento. */
+  border-radius: 50%; /* redondea las esquinas del elemento. */
+  margin-top: 0.25rem; /* define el espacio exterior superior. */
 }
-.level.low { background: var(--verde); }
-.level.mid { background: var(--amarillo); }
-.level.high { background: var(--rojo); }
+.level.low { background: var(--verde); /* define el fondo del elemento. */ }
+.level.mid { background: var(--amarillo); /* define el fondo del elemento. */ }
+.level.high { background: var(--rojo); /* define el fondo del elemento. */ }
 .screening-callout {
-  background: var(--rojo-claro);
-  border-left-color: var(--rojo);
+  background: var(--rojo-claro); /* define el fondo del elemento. */
+  border-left-color: var(--rojo); /* cambia el color del borde izquierdo. */
 }
 .screening-callout strong {
-  color: var(--rojo-oscuro);
+  color: var(--rojo-oscuro); /* define el color del texto. */
 }
 .test-invite {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 1rem;
-  align-items: center;
-  margin: 1.3rem 0;
-  padding: 1.25rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: minmax(0, 1fr) auto; /* define las columnas de una grilla. */
+  gap: 1rem; /* define el espacio entre elementos de grid o flex. */
+  align-items: center; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
+  margin: 1.3rem 0; /* define el espacio exterior del elemento. */
+  padding: 1.25rem; /* define el espacio interno del elemento. */
   background:
     linear-gradient(135deg, rgba(250,236,231,0.9), rgba(230,241,251,0.85)),
-    white;
-  border: 2px solid var(--rojo-medio);
-  border-radius: 8px;
-  box-shadow: 0 12px 28px rgba(44,44,42,0.08);
+    white; /* define el fondo del elemento con gradiente y color base. */
+  border: 2px solid var(--rojo-medio); /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  box-shadow: 0 12px 28px rgba(44,44,42,0.08); /* agrega una sombra alrededor del elemento. */
 }
 .test-invite h2 {
-  font-family: 'Fredoka One', cursive;
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
-  color: var(--texto);
-  margin-bottom: 0.35rem;
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  font-size: clamp(1.25rem, 3vw, 1.75rem); /* define el tamaño del texto. */
+  color: var(--texto); /* define el color del texto. */
+  margin-bottom: 0.35rem; /* define el espacio exterior inferior. */
 }
 .test-invite p {
-  color: var(--gris);
-  line-height: 1.65;
-  font-size: 0.95rem;
+  color: var(--gris); /* define el color del texto. */
+  line-height: 1.65; /* define la altura de cada linea de texto. */
+  font-size: 0.95rem; /* define el tamaño del texto. */
 }
 .anemia-test {
-  background: white;
-  border: 2px solid var(--rojo-claro);
-  border-radius: 8px;
-  padding: 1.2rem;
-  box-shadow: 0 12px 30px rgba(44,44,42,0.08);
+  background: white; /* define el fondo del elemento. */
+  border: 2px solid var(--rojo-claro); /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  padding: 1.2rem; /* define el espacio interno del elemento. */
+  box-shadow: 0 12px 30px rgba(44,44,42,0.08); /* agrega una sombra alrededor del elemento. */
 }
 .test-top {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 1rem;
-  align-items: center;
-  margin-bottom: 1rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: 1fr auto; /* define las columnas de una grilla. */
+  gap: 1rem; /* define el espacio entre elementos de grid o flex. */
+  align-items: center; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
+  margin-bottom: 1rem; /* define el espacio exterior inferior. */
 }
 .test-top h2 {
-  font-family: 'Fredoka One', cursive;
-  font-size: clamp(1.35rem, 3vw, 1.9rem);
-  color: var(--texto);
-  margin-bottom: 0.35rem;
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  font-size: clamp(1.35rem, 3vw, 1.9rem); /* define el tamaño del texto. */
+  color: var(--texto); /* define el color del texto. */
+  margin-bottom: 0.35rem; /* define el espacio exterior inferior. */
 }
 .test-top p {
-  color: var(--gris);
-  line-height: 1.65;
+  color: var(--gris); /* define el color del texto. */
+  line-height: 1.65; /* define la altura de cada linea de texto. */
 }
 .test-score-card {
-  min-width: 130px;
-  background: var(--rojo-claro);
-  border: 2px solid var(--rojo-medio);
-  border-radius: 8px;
-  padding: 0.8rem 1rem;
-  text-align: center;
+  min-width: 130px; /* define un ancho minimo. */
+  background: var(--rojo-claro); /* define el fondo del elemento. */
+  border: 2px solid var(--rojo-medio); /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  padding: 0.8rem 1rem; /* define el espacio interno del elemento. */
+  text-align: center; /* alinea el texto. */
 }
 .test-score-card span,
 .test-score-card small {
-  display: block;
-  color: var(--rojo-oscuro);
-  font-size: 0.78rem;
-  font-weight: 800;
+  display: block; /* define como se comporta el elemento en el layout. */
+  color: var(--rojo-oscuro); /* define el color del texto. */
+  font-size: 0.78rem; /* define el tamaño del texto. */
+  font-weight: 800; /* define el grosor de la letra. */
 }
 .test-score-card strong {
-  display: block;
-  font-family: 'Fredoka One', cursive;
-  font-size: 2rem;
-  color: var(--rojo);
-  line-height: 1.1;
+  display: block; /* define como se comporta el elemento en el layout. */
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  font-size: 2rem; /* define el tamaño del texto. */
+  color: var(--rojo); /* define el color del texto. */
+  line-height: 1.1; /* define la altura de cada linea de texto. */
 }
 .test-progress,
 .result-meter {
-  height: 12px;
-  border-radius: 999px;
-  background: var(--gris-claro);
-  overflow: hidden;
+  height: 12px; /* define la altura del elemento. */
+  border-radius: 999px; /* redondea las esquinas del elemento. */
+  background: var(--gris-claro); /* define el fondo del elemento. */
+  overflow: hidden; /* controla que pasa si el contenido se sale del contenedor. */
 }
 .test-progress {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.2rem; /* define el espacio exterior inferior. */
 }
 .test-progress span,
 .result-meter span {
-  display: block;
-  height: 100%;
-  width: 0;
-  border-radius: inherit;
-  background: linear-gradient(90deg, var(--verde), var(--amarillo), var(--rojo));
-  transition: width 0.35s ease;
+  display: block; /* define como se comporta el elemento en el layout. */
+  height: 100%; /* define la altura del elemento. */
+  width: 0; /* define el ancho del elemento. */
+  border-radius: inherit; /* redondea las esquinas del elemento. */
+  background: linear-gradient(90deg, var(--verde), var(--amarillo), var(--rojo)); /* define el fondo del elemento. */
+  transition: width 0.35s ease; /* suaviza cambios visuales como color, sombra o movimiento. */
 }
 .test-form {
-  display: grid;
-  gap: 0.9rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  gap: 0.9rem; /* define el espacio entre elementos de grid o flex. */
 }
 .profile-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 0.8rem;
-  margin-bottom: 1rem;
+  display: grid; /* define como se comporta el elemento en el layout. */
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); /* define las columnas de una grilla. */
+  gap: 0.8rem; /* define el espacio entre elementos de grid o flex. */
+  margin-bottom: 1rem; /* define el espacio exterior inferior. */
 }
 .profile-card {
-  border: 2px solid var(--gris-claro);
-  border-radius: 8px;
-  background: white;
-  color: var(--texto);
-  text-align: left;
-  padding: 0.9rem;
-  cursor: pointer;
-  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+  border: 2px solid var(--gris-claro); /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  background: white; /* define el fondo del elemento. */
+  color: var(--texto); /* define el color del texto. */
+  text-align: left; /* alinea el texto. */
+  padding: 0.9rem; /* define el espacio interno del elemento. */
+  cursor: pointer; /* cambia la forma del puntero del mouse. */
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease, box-shadow 0.22s ease; /* suaviza cambios visuales como color, sombra o movimiento. */
 }
 .profile-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--rojo-medio);
-  box-shadow: 0 8px 18px rgba(44,44,42,0.08);
+  transform: translateY(-3px); /* mueve, rota o escala visualmente el elemento. */
+  border-color: var(--rojo-medio); /* define el color del borde. */
+  box-shadow: 0 8px 18px rgba(44,44,42,0.08); /* agrega una sombra alrededor del elemento. */
 }
 .profile-card.active {
-  border-color: var(--rojo);
-  background: var(--rojo-claro);
-  box-shadow: 0 8px 18px rgba(216,90,48,0.12);
+  border-color: var(--rojo); /* define el color del borde. */
+  background: var(--rojo-claro); /* define el fondo del elemento. */
+  box-shadow: 0 8px 18px rgba(216,90,48,0.12); /* agrega una sombra alrededor del elemento. */
 }
 .profile-card span {
-  display: block;
-  font-weight: 800;
-  color: var(--texto);
+  display: block; /* define como se comporta el elemento en el layout. */
+  font-weight: 800; /* define el grosor de la letra. */
+  color: var(--texto); /* define el color del texto. */
 }
 .profile-card small {
-  color: var(--gris);
-  display: block;
-  margin-top: 0.25rem;
+  color: var(--gris); /* define el color del texto. */
+  display: block; /* define como se comporta el elemento en el layout. */
+  margin-top: 0.25rem; /* define el espacio exterior superior. */
 }
 .test-empty {
-  border: 2px dashed var(--azul-claro);
-  border-radius: 8px;
-  background: #fff;
-  color: var(--azul);
-  font-weight: 800;
-  text-align: center;
-  padding: 1.2rem;
+  border: 2px dashed var(--azul-claro); /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  background: #fff; /* define el fondo del elemento. */
+  color: var(--azul); /* define el color del texto. */
+  font-weight: 800; /* define el grosor de la letra. */
+  text-align: center; /* alinea el texto. */
+  padding: 1.2rem; /* define el espacio interno del elemento. */
 }
 .test-loaded {
-  animation: cardRise 0.4s ease both;
+  animation: cardRise 0.4s ease both; /* aplica una animacion al elemento. */
 }
 .test-question {
-  border: 2px solid var(--gris-claro);
-  border-radius: 8px;
-  padding: 1rem;
-  background: #fff;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  border: 2px solid var(--gris-claro); /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  padding: 1rem; /* define el espacio interno del elemento. */
+  background: #fff; /* define el fondo del elemento. */
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease; /* suaviza cambios visuales como color, sombra o movimiento. */
 }
 .test-question.answered {
-  border-color: var(--verde);
-  box-shadow: 0 8px 18px rgba(29,158,117,0.1);
+  border-color: var(--verde); /* define el color del borde. */
+  box-shadow: 0 8px 18px rgba(29,158,117,0.1); /* agrega una sombra alrededor del elemento. */
 }
 .test-question:hover {
-  transform: translateY(-2px);
-  border-color: var(--rojo-medio);
+  transform: translateY(-2px); /* mueve, rota o escala visualmente el elemento. */
+  border-color: var(--rojo-medio); /* define el color del borde. */
 }
 .test-question legend {
-  font-weight: 800;
-  color: var(--texto);
-  padding-right: 0.5rem;
-  margin-bottom: 0.8rem;
+  font-weight: 800; /* define el grosor de la letra. */
+  color: var(--texto); /* define el color del texto. */
+  padding-right: 0.5rem; /* define el espacio interno derecho. */
+  margin-bottom: 0.8rem; /* define el espacio exterior inferior. */
 }
 .test-question label {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  padding: 0.7rem 0.8rem;
-  margin-top: 0.5rem;
-  border: 2px solid var(--gris-claro);
-  border-radius: 8px;
-  color: var(--gris);
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  display: flex; /* define como se comporta el elemento en el layout. */
+  align-items: center; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
+  gap: 0.55rem; /* define el espacio entre elementos de grid o flex. */
+  padding: 0.7rem 0.8rem; /* define el espacio interno del elemento. */
+  margin-top: 0.5rem; /* define el espacio exterior superior. */
+  border: 2px solid var(--gris-claro); /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  color: var(--gris); /* define el color del texto. */
+  font-weight: 700; /* define el grosor de la letra. */
+  cursor: pointer; /* cambia la forma del puntero del mouse. */
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease; /* suaviza cambios visuales como color, sombra o movimiento. */
 }
 .test-question label:hover {
-  background: var(--rojo-claro);
-  border-color: var(--rojo-medio);
-  color: var(--rojo-oscuro);
-  transform: translateX(4px);
+  background: var(--rojo-claro); /* define el fondo del elemento. */
+  border-color: var(--rojo-medio); /* define el color del borde. */
+  color: var(--rojo-oscuro); /* define el color del texto. */
+  transform: translateX(4px); /* mueve, rota o escala visualmente el elemento. */
 }
 .test-question input {
-  accent-color: var(--rojo);
+  accent-color: var(--rojo); /* cambia el color del control seleccionado, como radio o checkbox. */
 }
 .test-question label:has(input:checked) {
-  background: var(--verde-claro);
-  border-color: var(--verde);
-  color: #085041;
+  background: var(--verde-claro); /* define el fondo del elemento. */
+  border-color: var(--verde); /* define el color del borde. */
+  color: #085041; /* define el color del texto. */
 }
 .test-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-  margin-top: 0.4rem;
+  display: flex; /* define como se comporta el elemento en el layout. */
+  flex-wrap: wrap; /* permite que los elementos flex bajen a otra linea. */
+  gap: 0.7rem; /* define el espacio entre elementos de grid o flex. */
+  margin-top: 0.4rem; /* define el espacio exterior superior. */
 }
 .test-button {
-  border: none;
-  border-radius: 8px;
-  background: var(--rojo);
-  color: white;
-  padding: 0.8rem 1.1rem;
-  font-weight: 800;
-  cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  border: none; /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  background: var(--rojo); /* define el fondo del elemento. */
+  color: white; /* define el color del texto. */
+  padding: 0.8rem 1.1rem; /* define el espacio interno del elemento. */
+  font-weight: 800; /* define el grosor de la letra. */
+  cursor: pointer; /* cambia la forma del puntero del mouse. */
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease; /* suaviza cambios visuales como color, sombra o movimiento. */
 }
 .test-button:hover {
-  background: var(--rojo-oscuro);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(216,90,48,0.2);
+  background: var(--rojo-oscuro); /* define el fondo del elemento. */
+  transform: translateY(-2px); /* mueve, rota o escala visualmente el elemento. */
+  box-shadow: 0 8px 18px rgba(216,90,48,0.2); /* agrega una sombra alrededor del elemento. */
 }
 .test-button.secondary {
-  background: var(--gris-claro);
-  color: var(--texto);
+  background: var(--gris-claro); /* define el fondo del elemento. */
+  color: var(--texto); /* define el color del texto. */
 }
 .test-button.secondary:hover {
-  background: var(--amarillo-claro);
-  box-shadow: none;
+  background: var(--amarillo-claro); /* define el fondo del elemento. */
+  box-shadow: none; /* agrega una sombra alrededor del elemento. */
 }
 .test-result {
-  margin-top: 1.2rem;
-  border: 2px solid var(--gris-claro);
-  border-radius: 8px;
-  padding: 1rem;
-  background: #fff;
-  transform: translateY(10px);
-  opacity: 0.82;
-  transition: transform 0.35s ease, opacity 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+  margin-top: 1.2rem; /* define el espacio exterior superior. */
+  border: 2px solid var(--gris-claro); /* define grosor, tipo y color del borde. */
+  border-radius: 8px; /* redondea las esquinas del elemento. */
+  padding: 1rem; /* define el espacio interno del elemento. */
+  background: #fff; /* define el fondo del elemento. */
+  transform: translateY(10px); /* mueve, rota o escala visualmente el elemento. */
+  opacity: 0.82; /* define la transparencia del elemento. */
+  transition: transform 0.35s ease, opacity 0.35s ease, border-color 0.35s ease, background 0.35s ease; /* suaviza cambios visuales como color, sombra o movimiento. */
 }
 .test-result.show {
-  transform: translateY(0);
-  opacity: 1;
-  animation: resultPulse 0.55s ease;
+  transform: translateY(0); /* mueve, rota o escala visualmente el elemento. */
+  opacity: 1; /* define la transparencia del elemento. */
+  animation: resultPulse 0.55s ease; /* aplica una animacion al elemento. */
 }
 .test-result.low {
-  border-color: var(--verde);
-  background: var(--verde-claro);
+  border-color: var(--verde); /* define el color del borde. */
+  background: var(--verde-claro); /* define el fondo del elemento. */
 }
 .test-result.mid {
-  border-color: var(--amarillo);
-  background: var(--amarillo-claro);
+  border-color: var(--amarillo); /* define el color del borde. */
+  background: var(--amarillo-claro); /* define el fondo del elemento. */
 }
 .test-result.high,
 .test-result.incomplete {
-  border-color: var(--rojo);
-  background: var(--rojo-claro);
+  border-color: var(--rojo); /* define el color del borde. */
+  background: var(--rojo-claro); /* define el fondo del elemento. */
 }
 .result-label {
-  color: var(--gris);
-  font-size: 0.82rem;
-  font-weight: 800;
-  margin: 0.75rem 0 0.3rem;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
+  color: var(--gris); /* define el color del texto. */
+  font-size: 0.82rem; /* define el tamaño del texto. */
+  font-weight: 800; /* define el grosor de la letra. */
+  margin: 0.75rem 0 0.3rem; /* define el espacio exterior del elemento. */
+  text-transform: uppercase; /* cambia mayusculas o minusculas del texto. */
+  letter-spacing: 0.6px; /* define el espacio entre letras. */
 }
 .test-result h3 {
-  font-family: 'Fredoka One', cursive;
-  color: var(--texto);
-  font-size: 1.35rem;
-  margin-bottom: 0.35rem;
+  font-family: 'Fredoka One', cursive; /* define la familia tipografica del texto. */
+  color: var(--texto); /* define el color del texto. */
+  font-size: 1.35rem; /* define el tamaño del texto. */
+  margin-bottom: 0.35rem; /* define el espacio exterior inferior. */
 }
 .test-result p:last-child {
-  color: var(--gris);
-  line-height: 1.65;
+  color: var(--gris); /* define el color del texto. */
+  line-height: 1.65; /* define la altura de cada linea de texto. */
 }
 @keyframes resultPulse {
-  0% { transform: scale(0.98); }
-  60% { transform: scale(1.01); }
-  100% { transform: scale(1); }
+  0% { transform: scale(0.98); /* mueve, rota o escala visualmente el elemento. */ }
+  60% { transform: scale(1.01); /* mueve, rota o escala visualmente el elemento. */ }
+  100% { transform: scale(1); /* mueve, rota o escala visualmente el elemento. */ }
 }
 .lift-card {
-  transform: translateY(0);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transform: translateY(0); /* mueve, rota o escala visualmente el elemento. */
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; /* suaviza cambios visuales como color, sombra o movimiento. */
 }
 .lift-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 26px rgba(44,44,42,0.1);
+  transform: translateY(-6px); /* mueve, rota o escala visualmente el elemento. */
+  box-shadow: 0 12px 26px rgba(44,44,42,0.1); /* agrega una sombra alrededor del elemento. */
 }
 .stagger.visible > * {
-  animation: cardRise 0.55s ease both;
+  animation: cardRise 0.55s ease both; /* aplica una animacion al elemento. */
 }
-.stagger.visible > *:nth-child(2) { animation-delay: 0.08s; }
-.stagger.visible > *:nth-child(3) { animation-delay: 0.16s; }
-.stagger.visible > *:nth-child(4) { animation-delay: 0.24s; }
-.stagger.visible > *:nth-child(5) { animation-delay: 0.32s; }
-.stagger.visible > *:nth-child(6) { animation-delay: 0.4s; }
+.stagger.visible > *:nth-child(2) { animation-delay: 0.08s; /* retrasa el inicio de una animacion. */ }
+.stagger.visible > *:nth-child(3) { animation-delay: 0.16s; /* retrasa el inicio de una animacion. */ }
+.stagger.visible > *:nth-child(4) { animation-delay: 0.24s; /* retrasa el inicio de una animacion. */ }
+.stagger.visible > *:nth-child(5) { animation-delay: 0.32s; /* retrasa el inicio de una animacion. */ }
+.stagger.visible > *:nth-child(6) { animation-delay: 0.4s; /* retrasa el inicio de una animacion. */ }
 @keyframes cardRise {
-  from { opacity: 0; transform: translateY(18px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from { opacity: 0; /* define la transparencia del elemento. */ transform: translateY(18px) scale(0.98); /* mueve, rota o escala visualmente el elemento. */ }
+  to { opacity: 1; /* define la transparencia del elemento. */ transform: translateY(0) scale(1); /* mueve, rota o escala visualmente el elemento. */ }
 }
 
 /* ===== SCROLL REVEAL ===== */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.visible { opacity: 1; transform: none; }
+/* Clases usadas por JavaScript para revelar elementos al hacer scroll. */
+.reveal { opacity: 0; /* define la transparencia del elemento. */ transform: translateY(28px); /* mueve, rota o escala visualmente el elemento. */ transition: opacity 0.6s ease, transform 0.6s ease; /* suaviza cambios visuales como color, sombra o movimiento. */ }
+.reveal.visible { opacity: 1; /* define la transparencia del elemento. */ transform: none; /* mueve, rota o escala visualmente el elemento. */ }
 
 /* ===================================================
    RESPONSIVE — MÓVIL PRIMERO
    =================================================== */
 
 /* Tablets */
+/* Cambios para pantallas medianas: se reducen columnas para que el contenido no se apriete. */
 @media (max-width: 900px) {
   body {
-    padding-top: 98px;
+    padding-top: 98px; /* define la propiedad CSS padding-top. */
   }
-  .intro-grid { grid-template-columns: 1fr; }
-  .video-container { max-width: 100%; }
-  header { background-attachment: scroll; background-position: center top; }
-  .img-full { max-height: 400px; }
+  .intro-grid { grid-template-columns: 1fr; /* define las columnas de una grilla. */ }
+  .video-container { max-width: 100%; /* limita el ancho maximo. */ }
+  header { background-attachment: scroll; /* controla si el fondo se mueve o queda fijo al hacer scroll. */ background-position: center top; /* ubica la imagen de fondo dentro del elemento. */ }
+  .img-full { max-height: 400px; /* limita la altura maxima. */ }
   .info-panel,
   .split-visual,
   .news-intro,
@@ -1589,187 +1612,190 @@ main {
   .risk-panel,
   .timeline,
   .habit-strip {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* define las columnas de una grilla. */
   }
   .feature-grid,
   .news-card,
   .recipe-card,
   .recipe-columns {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* define las columnas de una grilla. */
   }
   .recipe-card {
-    align-items: stretch;
+    align-items: stretch; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
   }
   .news-card img {
-    min-height: 220px;
-    height: 240px;
+    min-height: 220px; /* define una altura minima. */
+    height: 240px; /* define la altura del elemento. */
   }
   .recipe-card > img {
-    width: 100%;
-    height: auto;
-    max-height: 520px;
-    border-right: 0;
-    border-bottom: 1px solid var(--rojo-claro);
+    width: 100%; /* define el ancho del elemento. */
+    height: auto; /* define la altura del elemento. */
+    max-height: 520px; /* limita la altura maxima. */
+    border-right: 0; /* define el borde derecho. */
+    border-bottom: 1px solid var(--rojo-claro); /* define el borde inferior. */
   }
   .recipe-reference {
-    max-width: 100%;
-    aspect-ratio: 16 / 10;
+    max-width: 100%; /* limita el ancho maximo. */
+    aspect-ratio: 16 / 10; /* mantiene una proporcion fija entre ancho y alto. */
   }
   .site-nav {
-    align-items: flex-start;
+    align-items: flex-start; /* alinea los elementos en el eje vertical o cruzado del contenedor. */
   }
   .image-slot,
   .imagen-slot {
-    height: clamp(220px, 42vw, 300px);
+    height: clamp(220px, 42vw, 300px); /* define la altura del elemento. */
   }
 }
 
 /* Móvil */
+/* Cambios para celulares: botones a ancho completo, imagenes mas pequenas y una sola columna. */
 @media (max-width: 600px) {
   body {
-    padding-top: 118px;
+    padding-top: 118px; /* define la propiedad CSS padding-top. */
   }
   header {
-    min-height: 80vh;
-    padding: 2rem var(--px) 3rem;
+    min-height: 80vh; /* define una altura minima. */
+    padding: 2rem var(--px) 3rem; /* define el espacio interno del elemento. */
   }
-  header h1 { font-size: 2.2rem; }
-  header p { font-size: 0.9rem; max-width: 100%; }
+  header h1 { font-size: 2.2rem; /* define el tamaño del texto. */ }
+  header p { font-size: 0.9rem; /* define el tamaño del texto. */ max-width: 100%; /* limita el ancho maximo. */ }
   .hero-logo {
-    width: min(88vw, 430px);
-    max-height: 155px;
+    width: min(88vw, 430px); /* define el ancho del elemento. */
+    max-height: 155px; /* limita la altura maxima. */
   }
-  .globulos-deco { font-size: 2.6rem; }
+  .globulos-deco { font-size: 2.6rem; /* define el tamaño del texto. */ }
 
-  nav a { font-size: 11px; padding: 9px 8px; }
+  nav a { font-size: 11px; /* define el tamaño del texto. */ padding: 9px 8px; /* define el espacio interno del elemento. */ }
   .site-nav {
-    gap: 0.4rem;
+    gap: 0.4rem; /* define el espacio entre elementos de grid o flex. */
   }
   .brand {
-    width: 100%;
-    text-align: center;
-    padding: 8px 0 4px;
+    width: 100%; /* define el ancho del elemento. */
+    text-align: center; /* alinea el texto. */
+    padding: 8px 0 4px; /* define el espacio interno del elemento. */
   }
   .nav-links {
-    justify-content: center;
+    justify-content: center; /* alinea los elementos en el eje horizontal o principal. */
   }
   .page-header {
-    min-height: 250px;
-    padding: 3.4rem var(--px) 2.6rem;
+    min-height: 250px; /* define una altura minima. */
+    padding: 3.4rem var(--px) 2.6rem; /* define el espacio interno del elemento. */
   }
   .home-header {
-    min-height: 78vh;
+    min-height: 78vh; /* define una altura minima. */
   }
   .feature-card h2,
   .news-card h2,
   .recipe-card h2 {
-    font-size: 1.08rem;
+    font-size: 1.08rem; /* define el tamaño del texto. */
   }
   .feature-card img,
   .news-card img {
-    height: 190px;
-    min-height: 190px;
+    height: 190px; /* define la altura del elemento. */
+    min-height: 190px; /* define una altura minima. */
   }
   .recipe-card > img {
-    max-height: 430px;
-    padding: 0.5rem;
+    max-height: 430px; /* limita la altura maxima. */
+    padding: 0.5rem; /* define el espacio interno del elemento. */
   }
   .recipe-reference {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 4 / 3; /* mantiene una proporcion fija entre ancho y alto. */
   }
   .image-slot,
   .imagen-slot {
-    height: clamp(190px, 60vw, 260px);
+    height: clamp(190px, 60vw, 260px); /* define la altura del elemento. */
   }
   .action-link,
   .test-button {
-    width: 100%;
+    width: 100%; /* define el ancho del elemento. */
   }
   .home-test-panel,
   .test-invite,
   .anemia-test {
-    padding: 1rem;
+    padding: 1rem; /* define el espacio interno del elemento. */
   }
   .test-score-card {
-    width: 100%;
+    width: 100%; /* define el ancho del elemento. */
   }
   .profile-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* define las columnas de una grilla. */
   }
 
-  section { padding: 1.8rem 0; }
+  section { padding: 1.8rem 0; /* define el espacio interno del elemento. */ }
 
-  .dos-col { grid-template-columns: 1fr; gap: 1rem; }
+  .dos-col { grid-template-columns: 1fr; /* define las columnas de una grilla. */ gap: 1rem; /* define el espacio entre elementos de grid o flex. */ }
 
-  .ninos-banner { flex-direction: column; gap: 0.8rem; padding: 1rem; }
-  .nino-img { width: 85px; height: 85px; }
+  .ninos-banner { flex-direction: column; /* define la direccion de los elementos flex. */ gap: 0.8rem; /* define el espacio entre elementos de grid o flex. */ padding: 1rem; /* define el espacio interno del elemento. */ }
+  .nino-img { width: 85px; /* define el ancho del elemento. */ height: 85px; /* define la altura del elemento. */ }
 
-  .tipos-grid { grid-template-columns: 1fr 1fr; }
-  .hemo-grid { grid-template-columns: repeat(2, 1fr); }
-  .prevencion-grid { grid-template-columns: 1fr; }
-  .links-grid { grid-template-columns: 1fr; }
+  .tipos-grid { grid-template-columns: 1fr 1fr; /* define las columnas de una grilla. */ }
+  .hemo-grid { grid-template-columns: repeat(2, 1fr); /* define las columnas de una grilla. */ }
+  .prevencion-grid { grid-template-columns: 1fr; /* define las columnas de una grilla. */ }
+  .links-grid { grid-template-columns: 1fr; /* define las columnas de una grilla. */ }
 
-  .acord-body-inner { padding-left: 1rem; }
-  .acord-title { font-size: 0.87rem; }
-  .acord-tag { display: none; }
+  .acord-body-inner { padding-left: 1rem; /* define el espacio interno izquierdo. */ }
+  .acord-title { font-size: 0.87rem; /* define el tamaño del texto. */ }
+  .acord-tag { display: none; /* define como se comporta el elemento en el layout. */ }
 
   /* Imagen de alimentos responsiva en móvil */
-  .img-full { max-height: 300px; }
+  .img-full { max-height: 300px; /* limita la altura maxima. */ }
 
   /* Tabla: scroll horizontal en móvil */
-  section#alimentos .container { overflow-x: auto; }
-  .alimentos-tabla { font-size: 0.8rem; min-width: 500px; }
+  section#alimentos .container { overflow-x: auto; /* controla el desborde horizontal. */ }
+  .alimentos-tabla { font-size: 0.8rem; /* define el tamaño del texto. */ min-width: 500px; /* define un ancho minimo. */ }
   .alimentos-tabla th,
-  .alimentos-tabla td { padding: 7px 9px; }
+  .alimentos-tabla td { padding: 7px 9px; /* define el espacio interno del elemento. */ }
 
-  .curio-card { width: 210px; padding: 1rem 1.1rem; }
+  .curio-card { width: 210px; /* define el ancho del elemento. */ padding: 1rem 1.1rem; /* define el espacio interno del elemento. */ }
   .info-panel > div:first-child,
   .split-visual > div:first-child,
   .news-intro > div:first-child,
   .data-story {
-    padding: 1rem;
+    padding: 1rem; /* define el espacio interno del elemento. */
   }
   .media-note {
-    min-height: 160px;
+    min-height: 160px; /* define una altura minima. */
   }
   .mini-grid,
   .stats-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* define las columnas de una grilla. */
   }
 }
 
 /* Muy pequeño */
+/* Cambios para celulares muy pequenos. */
 @media (max-width: 380px) {
-  header { min-height: 75vh; padding: 1.5rem 1rem; }
-  header h1 { font-size: 1.8rem; }
-  header p { font-size: 0.85rem; }
+  header { min-height: 75vh; /* define una altura minima. */ padding: 1.5rem 1rem; /* define el espacio interno del elemento. */ }
+  header h1 { font-size: 1.8rem; /* define el tamaño del texto. */ }
+  header p { font-size: 0.85rem; /* define el tamaño del texto. */ }
   .hero-logo {
-    width: min(90vw, 330px);
-    max-height: 120px;
+    width: min(90vw, 330px); /* define el ancho del elemento. */
+    max-height: 120px; /* limita la altura maxima. */
   }
-  .globulos-deco { font-size: 2rem; }
+  .globulos-deco { font-size: 2rem; /* define el tamaño del texto. */ }
 
-  .tipos-grid { grid-template-columns: 1fr; }
-  nav a { font-size: 10px; padding: 8px 6px; }
+  .tipos-grid { grid-template-columns: 1fr; /* define las columnas de una grilla. */ }
+  nav a { font-size: 10px; /* define el tamaño del texto. */ padding: 8px 6px; /* define el espacio interno del elemento. */ }
   
-  .img-full { max-height: 220px; }
+  .img-full { max-height: 220px; /* limita la altura maxima. */ }
   .image-slot,
   .imagen-slot {
-    height: 190px;
+    height: 190px; /* define la altura del elemento. */
   }
   .home-test-panel h2,
   .test-invite h2,
   .test-top h2 {
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* define el tamaño del texto. */
   }
 }
 
+/* Si el usuario prefiere menos movimiento, se desactivan animaciones para accesibilidad. */
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .lift-card,
   .stagger.visible > * {
-    animation: none;
-    transition: none;
-    transform: none;
+    animation: none; /* aplica una animacion al elemento. */
+    transition: none; /* suaviza cambios visuales como color, sombra o movimiento. */
+    transform: none; /* mueve, rota o escala visualmente el elemento. */
   }
 }

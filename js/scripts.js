@@ -1,32 +1,56 @@
+// Selecciona todos los elementos que tienen la clase .reveal.
+// Esos elementos empiezan ocultos y aparecen con animacion al hacer scroll.
 const reveals = document.querySelectorAll('.reveal');
 
+// IntersectionObserver permite detectar cuando un elemento entra en la pantalla.
+// Si el navegador lo soporta, se usa para activar animaciones solo cuando hacen falta.
 if ('IntersectionObserver' in window) {
+  // observer observa varios elementos y recibe una lista de "entries" con su estado.
   const observer = new IntersectionObserver((entries) => {
+    // Recorre cada elemento observado.
     entries.forEach((entry, index) => {
+      // isIntersecting significa que el elemento ya se ve en la pantalla.
       if (entry.isIntersecting) {
+        // Agrega la clase visible con un pequeno retraso para crear efecto escalonado.
         setTimeout(() => entry.target.classList.add('visible'), index * 80);
+
+        // Deja de observar ese elemento porque la animacion solo debe ocurrir una vez.
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
 
+  // Inicia la observacion de cada elemento con clase reveal.
   reveals.forEach(element => observer.observe(element));
 } else {
+  // Si el navegador es antiguo y no soporta IntersectionObserver,
+  // se muestran los elementos directamente para no dejar contenido oculto.
   reveals.forEach(element => element.classList.add('visible'));
 }
 
+// Busca todos los botones/cabeceras de acordeon.
 document.querySelectorAll('.acord-header').forEach(header => {
+  // Cuando se hace clic en una cabecera, se abre o cierra su contenido.
   header.addEventListener('click', () => {
+    // closest busca el contenedor padre del acordeon.
     const item = header.closest('.acord-item');
+
+    // Dentro del item, .acord-body es el contenido desplegable.
     const body = item.querySelector('.acord-body');
+
+    // Guarda si el item ya estaba abierto antes del clic.
     const isOpen = item.classList.contains('acord-open');
 
+    // Cierra todos los acordeones antes de abrir uno nuevo.
     document.querySelectorAll('.acord-item').forEach(element => {
       element.classList.remove('acord-open');
       const elementBody = element.querySelector('.acord-body');
+
+      // maxHeight en null hace que el contenido vuelva a quedar cerrado.
       if (elementBody) elementBody.style.maxHeight = null;
     });
 
+    // Si el item no estaba abierto, se abre y se ajusta su altura real.
     if (!isOpen) {
       item.classList.add('acord-open');
       body.style.maxHeight = `${body.scrollHeight}px`;
@@ -34,19 +58,29 @@ document.querySelectorAll('.acord-header').forEach(header => {
   });
 });
 
+// Abre automaticamente el primer acordeon de la pagina, si existe.
 const firstAcord = document.querySelector('.acord-item');
 if (firstAcord) {
   firstAcord.classList.add('acord-open');
   const firstBody = firstAcord.querySelector('.acord-body');
+
+  // scrollHeight obtiene la altura necesaria para mostrar todo el contenido interno.
   if (firstBody) firstBody.style.maxHeight = `${firstBody.scrollHeight}px`;
 }
 
 // ===== TEST ORIENTATIVO DE RIESGO DE ANEMIA =====
+// Busca el contenedor del test. Solo existe en diagnostico.html.
 const anemiaTest = document.querySelector('[data-anemia-test]');
 
+// Todo el codigo del test se ejecuta solamente si la pagina tiene data-anemia-test.
 if (anemiaTest) {
+  // Botones para escoger el perfil: adolescente, hombre, mujer, gestante, adulto mayor.
   const profileButtons = Array.from(anemiaTest.querySelectorAll('[data-profile]'));
+
+  // Formulario donde se cargaran las preguntas de forma dinamica.
   const form = anemiaTest.querySelector('[data-test-form]');
+
+  // Elementos visuales donde se muestran puntaje, progreso y resultado.
   const scoreOutput = anemiaTest.querySelector('[data-test-score]');
   const progressOutput = anemiaTest.querySelector('[data-test-progress]');
   const progressLabel = anemiaTest.querySelector('[data-test-progress-label]');
@@ -55,9 +89,16 @@ if (anemiaTest) {
   const resultLabel = anemiaTest.querySelector('[data-result-label]');
   const resultTitle = anemiaTest.querySelector('[data-result-title]');
   const resultText = anemiaTest.querySelector('[data-result-text]');
+
+  // currentProfile guarda el perfil seleccionado actualmente.
   let currentProfile = '';
+
+  // currentQuestions guarda las preguntas cargadas para ese perfil.
   let currentQuestions = [];
 
+  // Banco de preguntas del test.
+  // Cada perfil tiene una lista de preguntas.
+  // Cada pregunta tiene el texto y tres respuestas con puntajes 0, 1 o 2.
   const questionBank = {
     adolescente: [
       ['¿Sientes cansancio, sueño o debilidad durante clases o actividades?', ['Casi nunca', 0], ['Algunas veces', 1], ['Frecuentemente', 2]],
@@ -101,17 +142,21 @@ if (anemiaTest) {
     ]
   };
 
+  // Obtiene todas las respuestas seleccionadas dentro del formulario.
   function getAnsweredInputs() {
     return Array.from(form.querySelectorAll('.test-question'))
       .map(question => question.querySelector('input:checked'))
       .filter(Boolean);
   }
 
+  // Calcula el puntaje sumando el valor numerico de cada respuesta marcada.
   function getScore() {
     return getAnsweredInputs().reduce((total, input) => total + Number(input.value), 0);
   }
 
+  // Convierte el puntaje total en un nivel de riesgo orientativo.
   function getRisk(score) {
+    // De 0 a 3 puntos se considera riesgo bajo.
     if (score <= 3) {
       return {
         level: 'Riesgo bajo',
@@ -121,6 +166,7 @@ if (anemiaTest) {
       };
     }
 
+    // De 4 a 7 puntos se considera riesgo moderado.
     if (score <= 7) {
       return {
         level: 'Riesgo moderado',
@@ -130,6 +176,7 @@ if (anemiaTest) {
       };
     }
 
+    // 8 puntos o mas se considera riesgo alto.
     return {
       level: 'Riesgo alto',
       title: 'Mayor probabilidad de riesgo',
@@ -138,10 +185,14 @@ if (anemiaTest) {
     };
   }
 
+  // Dibuja en pantalla las preguntas correspondientes al perfil elegido.
   function renderQuestions(profile) {
+    // Guarda el perfil seleccionado.
     currentProfile = profile;
+    // Busca las preguntas para ese perfil. Si no encuentra, usa una lista vacia.
     currentQuestions = questionBank[profile] || [];
 
+    // Crea el HTML de cada pregunta y sus respuestas.
     form.innerHTML = currentQuestions.map((question, questionIndex) => {
       const [text, ...answers] = question;
       return `
@@ -162,16 +213,22 @@ if (anemiaTest) {
       </div>
     `;
 
+    // Marca visualmente el boton del perfil activo.
     profileButtons.forEach(button => {
       button.classList.toggle('active', button.dataset.profile === profile);
     });
 
+    // Limpia cualquier resultado anterior.
     resetResult();
+    // Actualiza el progreso desde cero.
     updateProgress();
+    // Activa una animacion de entrada en las preguntas.
     form.classList.add('test-loaded');
   }
 
+  // Actualiza la barra de progreso, el puntaje y el estado visual de preguntas respondidas.
   function updateProgress() {
+    // Si no hay preguntas cargadas, el usuario todavia no eligio perfil.
     if (!currentQuestions.length) {
       scoreOutput.textContent = '0';
       progressOutput.style.width = '0%';
@@ -179,21 +236,28 @@ if (anemiaTest) {
       return;
     }
 
+    // Lista de preguntas que ya estan dibujadas en el formulario.
     const questions = Array.from(form.querySelectorAll('.test-question'));
+    // Cantidad de preguntas respondidas.
     const answered = getAnsweredInputs().length;
+    // Puntaje acumulado hasta el momento.
     const score = getScore();
+    // Porcentaje de avance para llenar la barra.
     const progress = Math.round((answered / questions.length) * 100);
 
     scoreOutput.textContent = score;
     progressOutput.style.width = `${progress}%`;
     progressLabel.textContent = `${answered} de ${questions.length} preguntas`;
 
+    // Resalta las preguntas que ya fueron contestadas.
     questions.forEach(question => {
       question.classList.toggle('answered', Boolean(question.querySelector('input:checked')));
     });
   }
 
+  // Muestra el resultado final del test.
   function showResult() {
+    // Si no hay perfil seleccionado, el test no puede calcular nada.
     if (!currentQuestions.length) {
       resultBox.className = 'test-result incomplete show';
       resultLabel.textContent = 'Perfil pendiente';
@@ -202,9 +266,11 @@ if (anemiaTest) {
       return;
     }
 
+    // Vuelve a obtener las preguntas para comprobar si todas fueron respondidas.
     const questions = Array.from(form.querySelectorAll('.test-question'));
     const answered = getAnsweredInputs().length;
 
+    // Si falta alguna respuesta, se muestra un mensaje de test incompleto.
     if (answered < questions.length) {
       resultBox.className = 'test-result incomplete show';
       resultMeter.style.width = `${Math.round((answered / questions.length) * 100)}%`;
@@ -214,11 +280,19 @@ if (anemiaTest) {
       return;
     }
 
+    // Con todas las preguntas respondidas, se calcula el puntaje final.
     const score = getScore();
+
+    // getRisk transforma el puntaje en bajo, moderado o alto.
     const risk = getRisk(score);
+
+    // maxScore es el puntaje maximo posible para el perfil elegido.
     const maxScore = currentQuestions.length * 2;
+
+    // meterWidth controla cuanto se llena la barra del resultado.
     const meterWidth = Math.max(12, Math.round((score / maxScore) * 100));
 
+    // Actualiza el bloque visual del resultado con clase, barra y textos.
     resultBox.className = `test-result ${risk.className} show`;
     resultMeter.style.width = `${meterWidth}%`;
     resultLabel.textContent = `${risk.level} · ${score} de ${maxScore} puntos`;
@@ -226,6 +300,7 @@ if (anemiaTest) {
     resultText.textContent = risk.text;
   }
 
+  // Devuelve el bloque de resultado a su estado inicial.
   function resetResult() {
     resultBox.className = 'test-result';
     resultMeter.style.width = '0%';
@@ -234,25 +309,36 @@ if (anemiaTest) {
     resultText.textContent = 'Tu resultado aparecera aqui al responder todas las preguntas.';
   }
 
+  // Cada boton de perfil carga un grupo distinto de preguntas.
   profileButtons.forEach(button => {
     button.addEventListener('click', () => renderQuestions(button.dataset.profile));
   });
 
+  // Cada vez que cambia una respuesta, se actualiza puntaje y progreso.
   form.addEventListener('change', updateProgress);
 
+  // Cuando se envia el formulario, se evita recargar la pagina y se muestra el resultado.
   form.addEventListener('submit', event => {
+    // preventDefault evita el comportamiento normal del formulario.
     event.preventDefault();
     updateProgress();
     showResult();
+
+    // Desplaza suavemente la pagina hacia el resultado.
     resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
 
+  // Escucha clics dentro del formulario para detectar el boton "Reiniciar".
   form.addEventListener('click', event => {
+    // Si el clic no fue en el boton con data-test-reset, no hace nada.
     if (!event.target.matches('[data-test-reset]')) return;
+
+    // Limpia respuestas, resultado y progreso.
     form.reset();
     resetResult();
     updateProgress();
   });
 
+  // Estado inicial del test al cargar la pagina.
   updateProgress();
 }
